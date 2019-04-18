@@ -10,5 +10,5 @@ sessionStart () {
     SESSION_USER="$1"
     SESSION_ADMIN="$2"
     SESSION_START=$(date)
-    echo -ne "${CY}$username${NC}@${GR}rvsh${NC} > "
+    echo -ne "\n${CY}$username${NC}@${GR}rvsh${NC}>"
 }
