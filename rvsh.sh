@@ -37,9 +37,15 @@ connectVm () {
     local username=$2
     for vm in ./vms/*.vm; do
         local curr_vm_name=$(awk -F'"' '/^vm_name=/ {print $2}' $vm)
-        local curr_vm_name=$(awk -F'"' '/^username=/ {print $2}' $vm)
+        local curr_auth_users=$(awk -F'"' '/^auth_users=/ {print $2}' $vm)
         if [ "$curr_vm_name" != $vm_name ]; then
-            # cette machine n'existe pas
+            echo -e "[${RE}VM connection error${NC}] There's no vm named \"$vm_name\". Use ${CY}nvsh -h${NC} for help."
+        elif [ "$curr_auth_user" != $username ]; then
+            echo -e "[${RE}VM connection error${NC}] You're not authorized to connect to \"$vm_name\". Use ${CY}nvsh -h${NC} for help."
+        else
+            echo -ne "${CY}$username${NC}@${GR}$vm_name${NC} > "
+            break
+        fi
 }
 
 # Admin mode
