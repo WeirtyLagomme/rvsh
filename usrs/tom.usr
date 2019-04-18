@@ -1,0 +1,5 @@
+#!/bin/bash
+
+username="tom"
+password="1234"
+admin="1"
