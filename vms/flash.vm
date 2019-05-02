@@ -1,6 +1,3 @@
-#!/bin/bash
-
 vm_name="flash"
 # Authorized users
-declare -a auth_users
-auth_users("tom")
+authorized_users="tom henry max"
