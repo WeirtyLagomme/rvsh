@@ -21,10 +21,16 @@ source ./modules/connect/login.sh
 
 # Help
 function help () {
-    echo -e "[${GR}Help${NC}] Available arguments :
-
-        -c, -connect [vm_name, username]    Access a virtual machine through the connect mode.
-        -a, -admin                          Login as admin in order to manage users and vms."
+    echo -e "${CY} 
+ >----------------------------------<
+ |                        _         |
+ |                       | |        |   ${NC}[${GR}Help${NC}] Available commands :${CY}
+ |     _ __  __   __ ___ | |__      |
+ |    | '_ \ \ \ / // __|| '_ \     |       ${NC}-c, -connect [vm_name, username]    Access a virtual machine through the connect mode.${CY}    
+ |    | | | | \ V / \__ \| | | |    |      
+ |    |_| |_|  \_/  |___/|_| |_|    |       ${NC}-a, -admin                          Login as admin in order to manage users and vms.${CY}
+ |                                  |
+ >----------------------------------<${NC}"
 }
 
 # Connection mode
@@ -40,12 +46,12 @@ case $1 in
         exit
         ;;
     -t )
-        findUser "tom"
+        echo "test command"
         ;;
     * )
         error_type="Invalid"
         error_desc="\"$1\" doesn't exist"
-        if [ "$1" = "" ]; then
+        if [[ "$1" == "" ]]; then
             error_type="Missing"
             error_desc="You must specify in which mode you want to connect"
         fi

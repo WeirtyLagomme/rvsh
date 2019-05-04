@@ -8,7 +8,7 @@ function dispError () {
     local type=$1
     local msg=$2
     # Variables shouldn't be empty
-    if [ "$type" = "" ] || [ "$msg" = "" ]; then
+    if [[ -z $type ]] || [[ -z $msg ]]; then
         dispError "42" "Empty variables received in the \"dispError\" function"
         return 1
     fi
