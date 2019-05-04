@@ -1,14 +1,26 @@
 #!/bin/bash
 
 # Global session
+SESSION_ID=""
 SESSION_USER=""
-SESSION_ADMIN=""
+SESSION_VM=""
 SESSION_START=""
 
 # Start session
+# $1 : mode
+# $2 : username
+# $3 : vm_name
 sessionStart () {
-    SESSION_USER="$1"
-    SESSION_ADMIN="$2"
+    # Set global session vars
+    SESSION_ID=$(date +%s%N)
+    SESSION_USER=$2
+    SESSION_VM=$3
     SESSION_START=$(date)
-    echo -ne "\n${CY}$username${NC}@${GR}rvsh${NC}>"
+    # Select mode
+    local mode=$1
+    if [[ $mode == "connect" ]]; then
+        connectMode
+    elif [[ $mode == "admin" ]]; then
+        adminMode
+    fi
 }

@@ -1,9 +1,9 @@
 #!/bin/bash
 
-# Connect mode startup
+# Connect mode login
 # $1 : vm_name
 # $2 : username
-function connectMode () {
+function connectModeLogin () {
     local vm_name=$1
     local username=$2
     local password password_validated
@@ -18,7 +18,7 @@ function connectMode () {
         validateConnectPassword $username $password && password_validated=0
     done
     # Connect to VM
-    connectVM $vm_name $username
+    sessionStart "connect" $username $vm_name
 }
 
 
@@ -87,13 +87,4 @@ function validateConnectPassword () {
         return 1
     fi
     return 0
-}
-
-# Connect to VM
-# $1 : vm_name
-# $2 : username
-function connectVM () {
-    local vm_name=$1
-    local username=$2
-    echo -ne "\n${CY}$username${NC}@${GR}$vm_name${NC}>"
 }

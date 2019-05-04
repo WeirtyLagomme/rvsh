@@ -16,8 +16,10 @@ source ./sessions/session.sh
 # - - - - - < MODULES > - - - - - #
 # Admin
 source ./modules/admin/login.sh
+source ./modules/admin/mode.sh
 # Connect
 source ./modules/connect/login.sh
+source ./modules/connect/mode.sh
 
 # Help
 function help () {
@@ -36,14 +38,14 @@ function help () {
 # Connection mode
 case $1 in
     -c | -connect ) 
-        connectMode $2 $3
+        connectModeLogin $2 $3
         ;;
     -a | -admin )
-        adminMode
+        adminModeLogin
         ;;
     -h | --help )
         help
-        exit
+        exit 0
         ;;
     -t )
         echo "test command"

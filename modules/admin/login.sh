@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# Admin mode
-function adminMode () {
+# Admin mode login
+function adminModeLogin () {
     # Logins and validations
     local username password
     local username_validated password_validated
@@ -19,7 +19,7 @@ function adminMode () {
         validateAdminPassword $username $password && password_validated=0
     done
     # Start session
-    sessionStart $username $curr_is_admin
+    sessionStart "admin" $username
 }
 
 # Check username validity

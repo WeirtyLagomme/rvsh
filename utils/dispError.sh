@@ -20,6 +20,9 @@ function dispError () {
         "1" )
             type="VM connection"
             ;;
+        "2" )
+            type="Command"
+            ;;
         "42" )
             type="Internal"
             ;;
