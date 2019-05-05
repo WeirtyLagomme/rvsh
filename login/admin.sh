@@ -41,7 +41,7 @@ function validateAdminUsername () {
     fi
     # User isn't admin
     local admin=$(getVar "$usr" "admin")
-    if [[ -e $admin ]]; then
+    if [[ $admin == "0" ]]; then
         echo ""
         dispError "0" "\"$username\" doesn't have admin privileges"
         return 1

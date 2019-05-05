@@ -17,7 +17,7 @@ case $1 in
         help
         ;;
     -t )
-        echo "test command"
+        echo "test cmd"
         ;;
     * )
         error_msg="Invalid argument : the \"$1\" flag doesn't exists"

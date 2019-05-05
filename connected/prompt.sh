@@ -4,7 +4,6 @@ function startPrompt () {
     # Display prompt
     local prompt
     if [[ $SESSION_MODE == "connect" ]]; then
-        sed -i 's/connected_users="/&\('"$SESSION_USER"','"$SESSION_START"','"$SESSION_ID"'\)/' ./vms/flash.vm
         prompt="\n${CY}$SESSION_USER${NC}@${GR}$SESSION_VM${NC}>"
     elif [[ $SESSION_MODE == "admin" ]]; then
         prompt="\n${CY}$SESSION_USER${NC}@${GR}rvsh${NC}>"
@@ -20,11 +19,11 @@ function executeCommand () {
     while [[ true ]]; do
         read cmd
         case $cmd in
-            'who' )
-                who
-                ;;
+            'who' ) who ;;
             * )
-                dispError "2" "Incorrect command : \"$cmd\" doesn't exists"
+                error_msg="Incorrect command : \"$cmd\" doesn't exists"
+                [[ -z $cmd ]] && error_msg="Missing command : no command provided"
+                dispError "2" "$error_msg"
                 ;;
         esac
         echo -ne "$prompt"
