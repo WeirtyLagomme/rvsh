@@ -23,6 +23,9 @@ function dispError () {
         "2" )
             type="Command"
             ;;
+        "3" )
+            type="Argument"
+            ;;
         "42" )
             type="Internal"
             ;;
