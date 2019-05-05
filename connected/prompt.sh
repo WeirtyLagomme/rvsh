@@ -14,12 +14,19 @@ function startPrompt () {
 
 # $1 : prompt
 function executeCommand () {
-    # Wait for command
-    local cmd
+    # Wait for command & args
+    local input
     while [[ true ]]; do
-        read cmd
-        case $cmd in
-            'who' ) who ;;
+        read input
+        local args=()
+        IFS=' ' read -r -a args <<< "$input"
+        case "${args[0]}" in
+            who ) 
+                who 
+                ;;
+            host ) 
+                host "${args[1]}" "${args[2]}"
+                ;;
             * )
                 error_msg="Incorrect command : \"$cmd\" doesn't exists"
                 [[ -z $cmd ]] && error_msg="Missing command : no command provided"

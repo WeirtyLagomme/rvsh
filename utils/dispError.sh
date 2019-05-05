@@ -26,6 +26,9 @@ function dispError () {
         "3" )
             type="Argument"
             ;;
+        "4" )
+            type="Privileges"
+            ;;
         "42" )
             type="Internal"
             ;;
