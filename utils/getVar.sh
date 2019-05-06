@@ -5,8 +5,8 @@
 # $2 : variable name
 function getVar () {
     # Set local variables
-    local file=$1
-    local var=$2
+    local file="$1"
+    local var="$2"
     # Check for errors before returning variable
     if [[ -z $file ]] || [[ -z $var ]]; then
         # Variables shouldn't be empty

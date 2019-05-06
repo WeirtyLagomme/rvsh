@@ -9,13 +9,13 @@ function host () {
         return 1
     fi
     # Action mode can't be empty
-    local action=$1
+    local action="$1"
     if [[ -z $action ]]; then
         dispError "3" "The action_mode argument must be specified"
         return 1
     fi
     # VM name can't be empty
-    local vm_name=$2
+    local vm_name="$2"
     if [[ -z $vm_name ]]; then
         dispError "3" "The vm_name argument must be specified"
         return 1

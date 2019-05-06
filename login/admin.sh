@@ -26,7 +26,7 @@ function adminModeLogin () {
 # $1 : username
 function validateAdminUsername () {
     # Username can't be empty
-    local username=$1
+    local username="$1"
     if [[ -z $username ]]; then
         echo ""
         dispError "0" "Username can't be empty"
@@ -54,14 +54,14 @@ function validateAdminUsername () {
 # $2 : password
 function validateAdminPassword () {
     # Password can't be empty
-    local password=$2
+    local password="$2"
     if [[ -z $password ]]; then
         echo ""
         dispError "0" "Password can't be empty"
         return 1
     fi
     # Incorrect password
-    local username=$1
+    local username="$1"
     local usr=./usrs/$username.usr
     local correct_password=$(getVar "$usr" "password")
     if [[ $password != $correct_password ]]; then

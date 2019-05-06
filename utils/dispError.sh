@@ -5,8 +5,8 @@
 # $2 : error message
 function dispError () {
     # Set local variables
-    local type=$1
-    local msg=$2
+    local type="$1"
+    local msg="$2"
     # Variables shouldn't be empty
     if [[ -z $type ]] || [[ -z $msg ]]; then
         dispError "42" "Empty variables received in the \"dispError\" function"

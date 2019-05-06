@@ -4,8 +4,8 @@
 # $1 : vm_name
 # $2 : username
 function connectModeLogin () {
-    local vm_name=$1
-    local username=$2
+    local vm_name="$1"
+    local username="$2"
     local password password_validated
     # Validate VM name and username
     validateVM $vm_name
@@ -26,7 +26,7 @@ function connectModeLogin () {
 # $1 : vm_name
 function validateVM () {
     # VM name can't be empty
-    local vm_name=$1
+    local vm_name="$1"
     if [[ -z $vm_name ]]; then
         dispError "1" "VM name is required to connect"
         exit 128 # Invalid arg
@@ -44,7 +44,7 @@ function validateVM () {
 # $2 : username
 function validateUser () {
     # VM name can't be empty
-    local username=$2
+    local username="$2"
     if [[ -z $username ]]; then
         dispError "1" "Username is required to connect"
         exit 128 # Invalid arg
@@ -57,10 +57,10 @@ function validateUser () {
         exit 128 # Invalid arg
     fi
     # User must be authorized on VM
-    local vm_name=$1
+    local vm_name="$1"
     local vm=./vms/$vm_name.vm
     local authorized_users=$(getVar "$vm" "authorized_users")
-    if [[ $authorized_users != *$username* ]]; then
+    if [[ $authorized_users != *"($username)"* ]]; then
         dispError "1" "You're not authorized to connect to \"$vm_name\""
         exit 128 # Invalid arg
     fi
@@ -71,14 +71,14 @@ function validateUser () {
 # $2 : password
 function validateConnectPassword () {
     # Password can't be empty
-    local password=$2
+    local password="$2"
     if [[ -z $password ]]; then
         echo ""
         dispError "0" "Password can't be empty"
         return 1
     fi
     # Incorrect password
-    local username=$1
+    local username="$1"
     local usr=./usrs/$username.usr
     local correct_password=$(getVar "$usr" "password")
     if [[ $password != $correct_password ]]; then

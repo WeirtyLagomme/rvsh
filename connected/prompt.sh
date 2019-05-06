@@ -24,8 +24,11 @@ function executeCommand () {
             who ) 
                 who 
                 ;;
-            host ) 
+            host ) # TODO : A TERMINER (les liens entre vms)
                 host "${args[1]}" "${args[2]}"
+                ;;
+            passwd )
+                passwd "${args[1]}" "${args[2]}" "${args[3]}"
                 ;;
             * )
                 error_msg="Incorrect command : \"$cmd\" doesn't exists"
