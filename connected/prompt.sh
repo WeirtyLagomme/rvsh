@@ -18,13 +18,17 @@ function executeCommand () {
         local args=()
         IFS=' ' read -r -a args <<< "$cmd"
         # Match command
+        local err_vm_co="You must be connected to a VM in order to use this command"
+        local err_admin="You must be in admin mode in order to use this command"
         case "${args[0]}" in
             who ) 
-                local msg="You must be connected to a VM in order to use this command"
-                [[ ! -z $SESSION_VM ]] && who "$SESSION_VM" || dispError "2" "$msg" 
+                [[ ! -z $SESSION_VM ]] && who "$SESSION_VM" || dispError "2" "$err_vm_co" 
                 ;;
             host )
-                host "${args[1]}" "${args[2]}" "${args[3]}"
+                [[ $SESSION_MODE == "admin" ]] && host "${args[1]}" "${args[2]}" "${args[3]}" || dispError "4" "$err_admin" 
+                ;;
+            rhost )
+                [[ ! -z $SESSION_VM ]] && rhost || dispError "2" "$err_vm_co"
                 ;;
             passwd )
                 passwd "${args[1]}" "${args[2]}" "${args[3]}"
