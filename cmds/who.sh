@@ -1,13 +1,10 @@
 #!/bin/bash
 
+# Returns all users connected to the vm
+# $1 : vm name
 function who () {
-    # Must be connected to VM
-    if [[ -z $SESSION_VM ]]; then
-        dispError "2" "You must be connected to a VM in order to user this command"
-        return 1
-    fi
-    # Show connected users
-    local vm_path="./vms/$SESSION_VM.vm"
+    local vm_name="$1"
+    local vm_path="./vms/$vm_name.vm"
     local connected_users=$(getVar "$vm_path" "connected_users")
     local header="\n User\tConnected since\t\t\tID"
     echo -e "$header"

@@ -5,12 +5,6 @@
 # $3 : file
 # $4 : set mode
 function setVar () {
-    # Var name can't be empty
-    local name="$1"
-    if [[ -z $name ]]; then
-        dispError "42" "Var name received in setVar() was empty"
-        return 1
-    fi
     # Var value can't be empty
     local value="$2"
     if [[ -z $value ]]; then
@@ -29,13 +23,23 @@ function setVar () {
         dispError "42" "Set mode received in setVar() was empty"
         return 1
     fi
+    # Var name maybe can't be empty
+    local name="$1"
+    local err_name="Var name received in setVar() was empty"
     # Translate mode
-    if [[ $mode == "append" ]]; then
-        sed -i 's/'"$name"'="/&'"$value"'/' "$file"
-    elif [[ $mode == "replace" ]]; then
-        sed -i 's/^'"$name"'=".*"$/password="'"$value"'"/' "$file"
-    else
-        dispError "42" "Set mode received by setVar() was incorrect"
-        return 1
-    fi
+    case $mode in
+        "push" )
+            [[ ! -z $name ]] && sed -i 's/'"$name"'="/&'"$value"'/' "$file" || dispError "42" "$err_name"
+
+            ;;
+        "replace" )
+            [[ ! -z $name ]] && sed -i 's/^'"$name"'=".*"$/password="'"$value"'"/' "$file" || dispError "42" "$err_name"
+            ;;
+        "pop" )
+            sed -e s/"$value"//g -i "$file"
+            ;;
+        * )
+            dispError "42" "Set mode received by setVar() was incorrect"
+            ;;
+    esac
 }

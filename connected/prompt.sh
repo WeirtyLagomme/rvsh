@@ -20,10 +20,11 @@ function executeCommand () {
         # Match command
         case "${args[0]}" in
             who ) 
-                who 
+                local msg="You must be connected to a VM in order to use this command"
+                [[ ! -z $SESSION_VM ]] && who "$SESSION_VM" || dispError "2" "$msg" 
                 ;;
-            host ) # TODO : A TERMINER (les liens entre vms)
-                host "${args[1]}" "${args[2]}"
+            host )
+                host "${args[1]}" "${args[2]}" "${args[3]}"
                 ;;
             passwd )
                 passwd "${args[1]}" "${args[2]}" "${args[3]}"

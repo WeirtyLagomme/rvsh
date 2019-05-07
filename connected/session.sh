@@ -20,7 +20,7 @@ function sessionStart () {
     SESSION_START=$(date)
     # Save user's session in VM
     if [[ $SESSION_MODE == "connect" ]]; then
-        sed -i 's/connected_users="/&'"($SESSION_USER"','"$SESSION_START"','"$SESSION_ID)"'/' "./vms/$SESSION_VM.vm"
+        setVar "connected_users" "($SESSION_USER"','"$SESSION_START"','"$SESSION_ID)" "./vms/$SESSION_VM.vm" "push"
     fi
     # Start prompt
     startPrompt
