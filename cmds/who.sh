@@ -9,6 +9,10 @@ function who () {
     # Show connected users
     local vm_path="./vms/$SESSION_VM.vm"
     local connected_users=$(getVar "$vm_path" "connected_users")
-    echo ""
-    echo "$connected_users" | sed 'y/,\(\)/\t \n/' 
+    local header="\n User\tConnected since\t\t\tID"
+    echo -e "$header"
+    local line=" "
+    for (( i=0; i<58; i++ )); do line+="-"; done
+    echo "$line"
+    echo "$connected_users" | sed 'y/,\(\)/\t  /'
 }

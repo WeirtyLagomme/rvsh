@@ -34,5 +34,5 @@ function dispError () {
             ;;
     esac
     # Display message
-    echo -e "[${RE}$type error${NC}] $msg. Use ${CY}nvsh -h${NC} for help."
+    echo -e "\n[${RE}$type error${NC}] $msg. Use ${CY}nvsh -h${NC} for help."
 }

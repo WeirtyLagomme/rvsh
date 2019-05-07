@@ -6,18 +6,19 @@ function adminModeLogin () {
     local username password
     local username_validated password_validated
     # Prompt for username
+    echo -e "\n[${OR}Admin mode${NC}] Authentication"
     while [[ $username_validated != 0 ]]; do
-        echo -ne "[${OR}Admin mode${NC}] Authentication"
-        echo -ne "\n=> Username:"
+        echo -ne "\n => Username: "
         read username
         validateAdminUsername $username && username_validated=0
     done
     # Prompt for password
     while [[ $password_validated != 0 ]]; do
-        echo -ne "=> Password:"
+        echo -ne "\n => Password: "
         read -s password
         validateAdminPassword $username $password && password_validated=0
     done
+    echo -e "\n\n[${GR}Admin mode${NC}] Successfuly Authenticated"
     # Start session
     sessionStart "admin" $username
 }

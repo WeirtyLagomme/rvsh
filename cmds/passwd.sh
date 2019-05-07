@@ -46,4 +46,5 @@ function passwd () {
     fi
     # Set new password
     setVar "password" "$new_passwd" "./usrs/$SESSION_USER.usr" "replace"
+    dispNotif "1" "$SESSION_USER's password has been changed"
 }

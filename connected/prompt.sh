@@ -2,24 +2,22 @@
 
 function startPrompt () {
     # Display prompt
-    local prompt
-    if [[ $SESSION_MODE == "connect" ]]; then
-        prompt="\n${CY}$SESSION_USER${NC}@${GR}$SESSION_VM${NC}>"
-    elif [[ $SESSION_MODE == "admin" ]]; then
-        prompt="\n${CY}$SESSION_USER${NC}@${GR}rvsh${NC}>"
-    fi
-    echo -ne "$prompt"
-    executeCommand "$prompt"
+    local host
+    [[ $SESSION_MODE == "connect" ]] && host="$SESSION_VM"
+    [[ $SESSION_MODE == "admin" ]] && host="rvsh"
+    local prompt="\n${CY}$SESSION_USER${NC}@${GR}$host${NC}>"
+    executeCommand
 }
 
-# $1 : prompt
 function executeCommand () {
     # Wait for command & args
-    local input
-    while [[ true ]]; do
-        read input
+    while IFS= read -e -p "$(echo -e "$prompt") " cmd; do
+        # Save command to history
+        [[ ! -z $cmd ]] && history -s "$cmd"
+        # Split command in args
         local args=()
-        IFS=' ' read -r -a args <<< "$input"
+        IFS=' ' read -r -a args <<< "$cmd"
+        # Match command
         case "${args[0]}" in
             who ) 
                 who 
@@ -30,12 +28,12 @@ function executeCommand () {
             passwd )
                 passwd "${args[1]}" "${args[2]}" "${args[3]}"
                 ;;
+            rusers )
+                rusers
+                ;;
             * )
-                error_msg="Incorrect command : \"$cmd\" doesn't exists"
-                [[ -z $cmd ]] && error_msg="Missing command : no command provided"
-                dispError "2" "$error_msg"
+                [[ ! -z $cmd ]] && dispError "2" "Incorrect command : \"${args[0]}\" doesn't exists"
                 ;;
         esac
-        echo -ne "$prompt"
     done
 }

@@ -22,5 +22,5 @@ function dispNotif () {
             ;;
     esac
     # Display message
-    echo -e "[${GR}$type${NC}] $msg."
+    echo -e "\n[${GR}$type${NC}] $msg."
 }

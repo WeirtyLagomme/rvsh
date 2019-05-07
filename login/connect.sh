@@ -11,12 +11,13 @@ function connectModeLogin () {
     validateVM $vm_name
     validateUser $vm_name $username
     # Ask and validate password
+    echo -e "\n[${OR}Connect mode${NC}] Authentication"
     while [[ $password_validated != 0 ]]; do
-        echo -ne "[${OR}Connect mode${NC}] Authentication"
-        echo -ne "\n=> Password:"
+        echo -ne "\n => Password: "
         read -s password
         validateConnectPassword $username $password && password_validated=0
     done
+    echo -e "\n\n[${GR}Connect mode${NC}] Successfuly Authenticated"
     # Connect to VM
     sessionStart "connect" $username $vm_name
 }
