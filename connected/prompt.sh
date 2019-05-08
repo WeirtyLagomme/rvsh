@@ -21,6 +21,9 @@ function executeCommand () {
         local err_vm_co="You must be connected to a VM in order to use this command"
         local err_admin="You must be in admin mode in order to use this command"
         case "${args[0]}" in
+            help )
+                helpCmd "${args[1]}"
+                ;;
             who ) 
                 [[ ! -z $SESSION_VM ]] && who "$SESSION_VM" || dispError "2" "$err_vm_co" 
                 ;;

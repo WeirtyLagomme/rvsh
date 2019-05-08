@@ -10,3 +10,9 @@ function rhost () {
     echo "$line"
     echo "$connected_vms" | sed 'y/\(\)/  /'
 }
+
+function helpRhost () {
+    echo "
+    Returns a list of all the virtual machines linked to the one you're currently connected to.
+    > No arguments needed."
+}

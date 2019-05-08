@@ -7,3 +7,9 @@ function rusers () {
         who "$vm_name"
     done
 }
+
+function helpRusers () {
+    echo "
+    Returns a list of all the users connected on the virtual network, along with the virtual machine they are connected to and their connection time and date.
+    > No arguments needed."
+}

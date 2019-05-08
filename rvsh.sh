@@ -2,7 +2,7 @@
 
 # - - - - - < IMPORTS > - - - - - #
 
-for file in ./*/*; do source "$file"; done;
+for file in ./*/*.sh; do source "$file"; done;
 
 # - - - - - < USE MODE > - - - - - #
 
@@ -14,10 +14,11 @@ case $1 in
         adminModeLogin
         ;;
     -h | --help )
-        help
+        helpMode
         ;;
     -t )
-        echo "test cmd"
+        ok="ls"
+        $ok
         ;;
     * )
         error_msg="Invalid argument : the \"$1\" flag doesn't exists"

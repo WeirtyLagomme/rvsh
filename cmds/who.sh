@@ -6,10 +6,16 @@ function who () {
     local vm_name="$1"
     local vm_path="./vms/$vm_name.vm"
     local connected_users=$(getVar "$vm_path" "connected_users")
-    local header="\n User\tConnected since\t\t\tID"
+    local header="\n User\t\tConnected since\t\t\t\tID"
     echo -e "$header"
     local line=" "
-    for (( i=0; i<58; i++ )); do line+="-"; done
+    for (( i=0; i<74; i++ )); do line+="-"; done
     echo "$line"
-    echo "$connected_users" | sed 'y/,\(\)/\t  /'
+    echo -e "${connected_users//,/\\t\\t}" | sed 'y/\(\)/ \n/'
+}
+
+function helpWho () {
+    echo "
+    Returns a list of all users connected to the same virtual machine as you, along with their time and date of connection.
+    > No arguments needed."
 }

@@ -141,3 +141,10 @@ function unlinkHost () {
     setVar "connected_vms" "($vm_name)" "./vms/$sec_vm_name.vm" "pop"
     dispNotif "0" "\"vm_name\" and \"$sec_vm_name\" have been successfuly unlinked"
 }
+
+function helpHost () {
+    echo -e "
+    As an administrator, allows you to add or remove virtual machines from the network, and manage their links.
+    > host [ -a | -add, -r | -remove ] vm_name 
+    > host [ -l | -link, -ul | -unlink ] vm_name_1 vm_name_2"
+}

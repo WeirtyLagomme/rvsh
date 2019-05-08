@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Help
-function help () {
+function helpMode () {
     echo -e "${CY} 
  >----------------------------------<
  |                        _         |

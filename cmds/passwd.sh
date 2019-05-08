@@ -48,3 +48,9 @@ function passwd () {
     setVar "password" "$new_passwd" "./usrs/$SESSION_USER.usr" "replace"
     dispNotif "1" "$SESSION_USER's password has been changed"
 }
+
+function helpPasswd () {
+    echo "
+    Change your password.
+    > passwd current_password new_password confirm_new_password"
+}
