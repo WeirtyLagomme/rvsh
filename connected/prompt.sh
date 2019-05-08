@@ -24,6 +24,9 @@ function executeCommand () {
             help )
                 helpCmd "${args[1]}"
                 ;;
+            clear )
+                clear
+                ;;
             who ) 
                 [[ ! -z $SESSION_VM ]] && who "$SESSION_VM" || dispError "2" "$err_vm_co" 
                 ;;
@@ -38,6 +41,9 @@ function executeCommand () {
                 ;;
             rusers )
                 rusers
+                ;;
+            su )
+                su "${args[1]}" "${args[2]}" "${args[3]}"
                 ;;
             * )
                 [[ ! -z $cmd ]] && dispError "2" "Incorrect command : \"${args[0]}\" doesn't exists"

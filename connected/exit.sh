@@ -2,7 +2,7 @@
 
 function finish () {
     # Clear session from VM
-    [[ ! -z $SESSION_ID ]] && sed -e s/"($SESSION_USER,$SESSION_START,$SESSION_ID)"//g -i ./vms/flash.vm
+    [[ ! -z $SESSION_ID ]] && sed -e s/"($SESSION_USER,$SESSION_START,$SESSION_ID)"//g -i "./vms/$SESSION_VM.vm"
     exit 0
 }
 
