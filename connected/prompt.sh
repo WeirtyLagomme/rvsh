@@ -45,6 +45,9 @@ function executeCommand () {
             su )
                 su "${args[1]}" "${args[2]}" "${args[3]}"
                 ;;
+            connect )
+                connect "${args[1]}"
+                ;;
             * )
                 [[ ! -z $cmd ]] && dispError "2" "Incorrect command : \"${args[0]}\" doesn't exists"
                 ;;

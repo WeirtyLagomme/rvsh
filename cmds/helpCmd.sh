@@ -1,3 +1,5 @@
+#!/bin/bash
+
 
 # $1 : cmd_name
 function helpCmd () {

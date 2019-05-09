@@ -59,7 +59,7 @@ function validateUser () {
     fi
     # User must be authorized on VM
     local vm_name="$1"
-    local vm=./vms/$vm_name.vm
+    local vm="./vms/$vm_name.vm"
     local authorized_users=$(getVar "$vm" "authorized_users")
     if [[ $authorized_users != *"($username)"* ]]; then
         dispError "1" "You're not authorized to connect to \"$vm_name\""
