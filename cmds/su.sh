@@ -22,8 +22,8 @@ function su () {
 }
 
 function helpSu () {
-    echo "
-    Allows you to switch between users.
+    echo "Allows you to switch between users.
+    
     > su [ -c | -connect ] vm_name username
     > su [ -a | -admin ]"
 }

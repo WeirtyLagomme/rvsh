@@ -27,14 +27,14 @@ function connect () {
         return 1
     fi
     # Switch VM
-    sed -e s/"($SESSION_USER,$SESSION_START,$SESSION_ID)"//g -i "./vms/$SESSION_VM.vm"
+    setVar "connected_users" "./vms/$SESSION_VM.vm" "pop" "($SESSION_USER,$SESSION_START,$SESSION_ID)"
     SESSION_VM="$vm_name"
-    setVar "connected_users" "($SESSION_USER"','"$SESSION_START"','"$SESSION_ID)" "./vms/$SESSION_VM.vm" "push"
+    setVar "connected_users" "./vms/$SESSION_VM.vm" "push" "($SESSION_USER,$SESSION_START,$SESSION_ID)"
     dispNotif "0" "You're now connected to the \"$SESSION_VM\" virtual machine"
 }
 
 function helpConnect () {
-    echo "
-    Connect to another virtual machine linked to the one you're currently connected to.
+    echo "Connect to another virtual machine linked to the one you're currently connected to.
+
     > connect vm_name"
 }

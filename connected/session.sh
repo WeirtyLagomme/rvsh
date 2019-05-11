@@ -20,7 +20,7 @@ function sessionStart () {
     SESSION_START=$(date)
     # Save user's session in VM
     if [[ $SESSION_MODE == "connect" ]]; then
-        setVar "connected_users" "($SESSION_USER"','"$SESSION_START"','"$SESSION_ID)" "./vms/$SESSION_VM.vm" "push"
+        setVar "connected_users" "./vms/$SESSION_VM.vm" "push" "($SESSION_USER,$SESSION_START,$SESSION_ID)"
     fi
     # Start prompt
     startPrompt

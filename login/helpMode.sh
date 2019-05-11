@@ -5,11 +5,17 @@ function helpMode () {
     echo -e "${CY} 
  >----------------------------------<
  |                        _         |
- |                       | |        |   ${NC}[${GR}Help${NC}] Available commands :${CY}
+ |                       | |        |                 > Virtual network project <          
  |     _ __  __   __ ___ | |__      |
- |    | '_ \ \ \ / // __|| '_ \     |       ${NC}[ -c | -connect ] vm_name username    Access a virtual machine through the connect mode.${CY}    
- |    | | | | \ V / \__ \| | | |    |      
- |    |_| |_|  \_/  |___/|_| |_|    |       ${NC}[ -a | -admin ]                       Login as admin in order to manage users and vms.${CY}
+ |    | '_ \ \ \ / // __|| '_ \     |       Create, manage and use several virtual machines
+ |    | | | | \ V / \__ \| | | |    |       
+ |    |_| |_|  \_/  |___/|_| |_|    |            - Eleonore Desombre & Mickael Gomez -      
  |                                  |
- >----------------------------------<${NC}"
+ >----------------------------------<${NC}
+ 
+ [${GR}Help${NC}] rvsh can be used in two modes :
+
+    ( -c | -connect ) vm_name username    Access a virtual machine with a username through the connect mode.
+
+    ( -a | -admin )                       Login as admin in order to manage users and virtual machines."
 }

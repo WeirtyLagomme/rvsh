@@ -1,3 +1,4 @@
 password="123"
 admin="1"
-msgs=""
+unread_msgs=""
+read_msgs="(tom,test)(tom,hello)(tom,test)"

@@ -106,8 +106,8 @@ function linkHost () {
         return 1
     fi
     # Create link
-    setVar "connected_vms" "($sec_vm_name)" "./vms/$vm_name.vm" "push"
-    setVar "connected_vms" "($vm_name)" "./vms/$sec_vm_name.vm" "push"
+    setVar "connected_vms" "./vms/$vm_name.vm" "push" "($sec_vm_name)"
+    setVar "connected_vms" "./vms/$sec_vm_name.vm" "push" "($vm_name)"
     dispNotif "0" "\"$vm_name\" and \"$sec_vm_name\" have been successfuly linked"
 }
 
@@ -137,14 +137,15 @@ function unlinkHost () {
         return 1
     fi
     # Delete link
-    setVar "connected_vms" "($sec_vm_name)" "./vms/$vm_name.vm" "pop"
-    setVar "connected_vms" "($vm_name)" "./vms/$sec_vm_name.vm" "pop"
+    setVar "connected_vms" "./vms/$vm_name.vm" "pop" "($sec_vm_name)"
+    setVar "connected_vms" "./vms/$sec_vm_name.vm" "pop" "($vm_name)"
     dispNotif "0" "\"vm_name\" and \"$sec_vm_name\" have been successfuly unlinked"
 }
 
 function helpHost () {
-    echo -e "
-    As an administrator, allows you to add or remove virtual machines from the network, and manage their links.
-    > host [ -a | -add, -r | -remove ] vm_name 
+    echo "As an administrator, allows you to add or remove virtual machines from the network, and manage their links.
+    
+    > host ( -a | -add ) vm_name
+    > host ( -r | -remove ) vm_name  
     > host [ -l | -link, -ul | -unlink ] vm_name_1 vm_name_2"
 }

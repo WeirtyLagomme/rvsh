@@ -13,12 +13,8 @@ case $1 in
     -a | -admin )
         adminModeLogin
         ;;
-    -h | --help )
+    -h | -help )
         helpMode
-        ;;
-    -t )
-        ok="ls"
-        $ok
         ;;
     * )
         error_msg="Invalid argument : the \"$1\" flag doesn't exists"
