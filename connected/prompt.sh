@@ -56,6 +56,10 @@ function executeCommand () {
             write )
                 write "${args[1]}" "$cmd"
                 ;;
+            users )
+                helpUsers
+                users "${args[1]}" "${args[2]}" "${args[3]}" "${args[4]}" "${args[5]}" "${args[6]}" "${args[7]}"
+                ;;
             * )
                 [[ ! -z $cmd ]] && dispError "2" "Incorrect command : \"${args[0]}\" doesn't exists"
                 ;;
@@ -66,25 +70,10 @@ function executeCommand () {
 function asyncExec () {
     # Echo unread messages
     while [[ true ]]; do
-        local unread_msgs=$(getVar "./usrs/$SESSION_USER.usr" "unread_msgs")
-        if [[ ! -z $unread_msgs ]]; then
-        echo -ne "HOLA HERE I AM\r"
-            echo -ne "\n\n [${OR}Message${NC}] You received new message(s)"
-            # Split messages
-            local msgs=()
-            IFS=')' read -r -a msgs <<< "$unread_msgs"
-            for (( i=0; i<${#msgs[@]}; i++)); do
-                local msg=${msgs[i]/(}
-                local sender=$(echo $msg | cut -d, -f1)
-                local content=$(echo $msg | cut -d, -f2)
-                echo -ne "\n\n [${CY}$sender${NC}]\n\n $content"
-                # Set prompt back
-                echo -ne "\n$(buildPrompt)"
-                # Send message to reads
-                setVar "read_msgs" "./usrs/$SESSION_USER.usr" "push" "$unread_msgs"
-                setVar "unread_msgs" "./usrs/$SESSION_USER.usr" "pop" "$unread_msgs"
-            done
-        fi 
+        # Message inbox
+        checkInbox
+        # Account still active
+        checkAccount
         sleep 2
     done
 }

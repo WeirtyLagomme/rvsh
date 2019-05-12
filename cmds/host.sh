@@ -47,13 +47,13 @@ function host () {
 function addHost () {
     local vm_name="$1"
     # VM name must be available
-    if [[ -e "./vms/$vm_name.vm" || -e "./usrs/$vm_name.usr" ]]; then
+    if [[ -e "./vms/$vm_name.vm" ]]; then
         dispError "3" "The vm name \"$vm_name\" isn't available"
         return 1
     fi
     # VM name min length is 3
     if (( ${#vm_name} < 3 )); then
-        dispError "3" "VM name length must have a min length of 3"
+        dispError "3" "VM name must have a min length of 3"
         return 1
     fi
     # Validate vm_name format
@@ -145,7 +145,6 @@ function unlinkHost () {
 function helpHost () {
     echo "As an administrator, allows you to add or remove virtual machines from the network, and manage their links.
     
-    > host ( -a | -add ) vm_name
-    > host ( -r | -remove ) vm_name  
-    > host [ -l | -link, -ul | -unlink ] vm_name_1 vm_name_2"
+    > host ( -a | -add, -r | -remove ) vm_name
+    > host ( -l | -link, -ul | -unlink ) vm_name_1 vm_name_2" # TODO : must be able to (un)link more than 2 at the time
 }
