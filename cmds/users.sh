@@ -2,10 +2,9 @@
 
 # $1 : mode
 # $2 : username
-# $3 : password || property
-# $4 : admin || property
-# $5 : vm_name || property
-# $6 -> $n : any property to update
+# $3 : password || properties
+# $4 : admin || null
+# $5 : vm_name || null
 function users () {
     # Mode shouldn't be empty
     local mode="$1"
@@ -24,6 +23,8 @@ function users () {
             removeUser "$username"
             ;;
         -u | -update )
+            local properties="$3"
+            updateUser $username 
             ;;
         * )
             dispError "3" "Wrong argument : \"$mode\" isn't an existing mode"
@@ -126,10 +127,33 @@ function removeUser () {
     checkAccount
 }
 
+# $1 : username
+# $2 : properties
+function updateUser () {
+    local username="$1"
+    local properties="$2"
+    [[ -z $properties ]] && dispError "3" "Missing argument : properties" && return 1
+    # properties format
+    if [[ $properties =~ ^\(.*\)$ ]]; then # Array of properties
+        for property in $properties; do
+            local values=.....
+        done
+    elif [[ $properties =~ ^[A-Za-z0-9_]*(\-|\+)?=[A-Za-z0-9_]*$ ]]; then # One property
+        local values=$(echo $properties | cur -d= -f2)
+        if [[ $values =~ ^[A-Za-z0-9_]*$ ]]; then # One value
+        elif [[ $values =~ ^\(([A-Za-z0-9_]*,?)*\)$ ]]; then # Array of values
+        else # Wront format
+            dispError "3" "Wrong values format : (password=<password>,vms+=(<vm_name>,...),vms-=(<vm_name>,...)...) | password=<password>" && return 1
+        fi
+    else # Wront format
+        dispError "3" "Wrong properties format : (password=<password>,vms+=(<vm_name>...),vms-=(<vm_name>...)...) | password=<password>" && return 1
+    fi
+}
+
 function helpUsers () {
     echo "As admin, allows you to add, remove or manage user informations such as password or virtual machine's access.
     
     > users ( -a | -add ) username password [admin] [(vm_name_1,vm_name_2... )]
     > users ( -r | -remove ) username
-    > users ( -u | -update ) username [password=<password>, vms+=(<vm_name>...), vms-=(<vm_name>...)...]"
+    > users ( -u | -update ) username [(password=<password>,vms+=(<vm_name>...),vms-=(<vm_name>...)...) | password=<password>]"
 }
