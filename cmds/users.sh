@@ -16,7 +16,9 @@ function users () {
     # Select mode
     case $mode in
         -a | -add )
-            addUser "$username" "$password"
+            local admin="$4"
+            local vm_names="$5"
+            addUser "$username" "$password" "$admin" "$vm_names"
             ;;
         -r | -remove )
             removeUser "$username"
@@ -87,13 +89,13 @@ function addUser () {
         fi
     fi
     # Create User file
-    echo $(cat ./config/default.usr) >> "./usrs/$username.usr"
+    cp "./config/default.usr" "./usrs/$username.usr"
     # Fill user file
     setVar "password" "./usrs/$username.usr" "push" "$password"
     [[ ! -z $admin ]] && setVar "admin" "./usrs/$username.usr" "push" "$admin"
     if [[ ! -z $vm_names ]]; then
-        for i in "${auth_vm_names[@]}"; do
-            setVar "authorized_users" "./vms/${auth_vm_names[$i]}.vm" "push" "$username"
+        for vm_name in "${auth_vm_names[@]}"; do
+            setVar "authorized_users" "./vms/${vm_name}.vm" "push" "($username)"
         done
     fi
     dispNotif "0" "The user \"$username\" has been successfuly created"
@@ -114,7 +116,7 @@ function removeUser () {
 function helpUsers () {
     echo "As admin, allows you to add, remove or manage user informations such as password or virtual machine's access.
     
-    > users ( -a | -add ) username password [admin] [( vm_name_1 vm_name_2... )]
+    > users ( -a | -add ) username password [admin] [(vm_name_1,vm_name_2... )]
     > users ( -r | -remove ) username
     > users ( -u | -update ) username [password=<password>, vms+=(<vm_name>...), vms-=(<vm_name>...)...]"
 }
