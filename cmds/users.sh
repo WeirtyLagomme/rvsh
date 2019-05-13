@@ -75,17 +75,18 @@ function addUser () {
     local vm_names="$4"
     local auth_vm_names=()
     if [[ ! -z $vm_names ]]; then
-        # Single VM
-        if [[ ! $vm_names =~ ^\(([A-Za-z0-9_]*,?)*\)$ ]]; then
+        if [[ $vm_names =~ ^[A-Za-z0-9_]*$ ]]; then # Single VM
             [[ ! -e "./vms/$vm_names.vm" ]] && dispError "3" "There's no \"$vm_names\" virtual machine" && return 1
             auth_vm_names+=( "$vm_names" )
-        else # Array of vms
+        elif [[ $vm_names =~ ^\(([A-Za-z0-9_]*,?)*\)$ ]]; then # Array of vms
             # Remove ()
             vm_names="${vm_names:1:${#vm_names}-2}"
             IFS=',' read -r -a auth_vm_names <<< "$vm_names"
             for i in "${auth_vm_names[@]}"; do
                 [[ ! -e "./vms/${auth_vm_names[$i]}.vm" ]] && dispError "3" "There's no vm named \"${auth_vm_names[$i]}\"" && return 1
             done
+        else # Wrong format
+            dispError "3" "Wrong vm_name(s) format : (vm_name_1, vm_name_2...) or vm_name" && return 1
         fi
     fi
     # Create User file
@@ -94,8 +95,10 @@ function addUser () {
     setVar "password" "./usrs/$username.usr" "push" "$password"
     [[ ! -z $admin ]] && setVar "admin" "./usrs/$username.usr" "push" "$admin"
     if [[ ! -z $vm_names ]]; then
+        local vm_name
         for vm_name in "${auth_vm_names[@]}"; do
-            setVar "authorized_users" "./vms/${vm_name}.vm" "push" "($username)"
+            setVar "authorized_users" "./vms/$vm_name.vm" "push" "($username)"
+            setVar "authorized_vms" "./usrs/$username.usr" "push" "($vm_name)"
         done
     fi
     dispNotif "0" "The user \"$username\" has been successfuly created"
@@ -107,10 +110,20 @@ function removeUser () {
     # User must exists
     local user="./usrs/$username.usr"
     [[ ! -e $user ]] && dispError "3" "The user \"$username\" doesn't exists" && return 1
-    # Delete user
+    # Remove from vms auth
+    local authorized_vms=$(getVar "./usrs/$username.usr" "authorized_vms")
+    authorized_vms=${authorized_vms//(}
+    local auth_vm_names=()
+    IFS=')' read -r -a auth_vm_names <<< "$authorized_vms"
+    local vm_name
+    for vm_name in "${auth_vm_names[@]}"; do
+        setVar "authorized_users" "./vms/$vm_name.vm" "pop" "($username)"
+    done
+    # Delete user file
     rm "$user"
     dispNotif "1" "The user \"$username\" has been successfuly deleted"
-    [[ $username == $SESSION_USER ]] && exit 0
+    # If current user, logout
+    checkAccount
 }
 
 function helpUsers () {

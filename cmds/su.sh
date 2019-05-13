@@ -6,6 +6,8 @@
 function su () {
     # Select mode
     local mode="$1"
+    # Can't be empty
+    [[ -z $mode ]] && dispError "3" "Missing argument : mode" && return 1
     case $mode in
         -c | -connect )
             # Wipe current vm session

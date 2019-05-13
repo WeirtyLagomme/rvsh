@@ -1,4 +1,5 @@
 password="123"
 admin="1"
+authorized_vms="(flash)(disco)"
 unread_msgs=""
 read_msgs=""

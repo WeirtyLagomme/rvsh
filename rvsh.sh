@@ -16,6 +16,10 @@ case $1 in
     -h | -help )
         helpMode
         ;;
+    -t )
+        t="$2"
+        [[ $t =~ ^[A-Za-z0-9_]*$ ]] && echo "ok"
+        ;;
     * )
         error_msg="Invalid argument : the \"$1\" flag doesn't exists"
         [[ -z $1 ]] && error_msg="Missing argument : no argument(s) provided"
