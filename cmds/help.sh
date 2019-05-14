@@ -10,8 +10,10 @@ function help () {
             cmd_name=$(basename $cmd | cut -d. -f1)
             local help_content="$(help${cmd_name^})"
             local color="${BL}"
-            [[ $help_content == *"[ADMIN-ONLY]"* ]] && color="${OR}" && help_content=${help_content//"[ADMIN-ONLY]"}
-            help_content=${help_content//"[VMCO-ONLY]"}
+            if [[ "$(type -t need${cmd_name^})" == "function" ]]; then
+                local need_cmd="$(need${cmd_name^})"
+                [[ $need_cmd == *"admin"* ]] && color="${OR}"
+            fi
             echo -e "\n [$color$cmd_name${NC}] ${help_content//>/$arrow}"
         done
     elif [[ -e "./cmds/$cmd_name.sh" ]]; then  

@@ -16,7 +16,11 @@ function who () {
 }
 
 function helpWho () {
-    echo "[VMCO-ONLY]Returns a list of all users connected to the same virtual machine as you, along with their time and date of connection.
+    echo "Returns a list of all users connected to the same virtual machine as you, along with their time and date of connection.
     
     > No arguments needed."
+}
+
+function needWho () {
+    echo "vmco"
 }

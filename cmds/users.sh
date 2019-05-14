@@ -154,9 +154,13 @@ function updateUser () {
 }
 
 function helpUsers () {
-    echo "[ADMIN-ONLY]Allows you to add, remove or manage user informations such as password or virtual machine's access.
+    echo "Allows you to add, remove or manage user informations such as password or virtual machine's access.
     
     > users ( -a | -add ) username password [admin] [(vm_name_1,vm_name_2... )]
     > users ( -r | -remove ) username
     > users ( -u | -update ) username [(password=password,vms+=(vm_name...),vms-=(vm_name...)...) | password=password]"
+}
+
+function needUsers () {
+    echo "admin"
 }
