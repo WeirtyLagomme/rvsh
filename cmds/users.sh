@@ -135,13 +135,16 @@ function updateUser () {
     [[ -z $properties ]] && dispError "3" "Missing argument : properties" && return 1
     # properties format
     if [[ $properties =~ ^\(.*\)$ ]]; then # Array of properties
-        for property in $properties; do
-            local values=.....
-        done
+        # for property in $properties; do
+        #     local values=.....
+        # done
+        echo "tmp"
     elif [[ $properties =~ ^[A-Za-z0-9_]*(\-|\+)?=[A-Za-z0-9_]*$ ]]; then # One property
         local values=$(echo $properties | cur -d= -f2)
         if [[ $values =~ ^[A-Za-z0-9_]*$ ]]; then # One value
+            echo "tmp"
         elif [[ $values =~ ^\(([A-Za-z0-9_]*,?)*\)$ ]]; then # Array of values
+            echo "tmp"
         else # Wront format
             dispError "3" "Wrong values format : (password=<password>,vms+=(<vm_name>,...),vms-=(<vm_name>,...)...) | password=<password>" && return 1
         fi
@@ -151,9 +154,9 @@ function updateUser () {
 }
 
 function helpUsers () {
-    echo "As admin, allows you to add, remove or manage user informations such as password or virtual machine's access.
+    echo "[ADMIN-ONLY]Allows you to add, remove or manage user informations such as password or virtual machine's access.
     
     > users ( -a | -add ) username password [admin] [(vm_name_1,vm_name_2... )]
     > users ( -r | -remove ) username
-    > users ( -u | -update ) username [(password=<password>,vms+=(<vm_name>...),vms-=(<vm_name>...)...) | password=<password>]"
+    > users ( -u | -update ) username [(password=password,vms+=(vm_name...),vms-=(vm_name...)...) | password=password]"
 }

@@ -49,6 +49,7 @@ function passwd () {
     dispNotif "1" "$SESSION_USER's password has been changed"
 }
 
+# Help
 function helpPasswd () {
     echo "Change your password.
     

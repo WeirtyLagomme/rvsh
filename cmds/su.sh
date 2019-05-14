@@ -8,10 +8,10 @@ function su () {
     local mode="$1"
     # Can't be empty
     [[ -z $mode ]] && dispError "3" "Missing argument : mode" && return 1
+    # Wipe current vm session if needed
+    [[ ! -z $SESSION_VM ]] && sed -e s/"($SESSION_USER,$SESSION_START,$SESSION_ID)"//g -i "./vms/$SESSION_VM.vm"
     case $mode in
         -c | -connect )
-            # Wipe current vm session
-            sed -e s/"($SESSION_USER,$SESSION_START,$SESSION_ID)"//g -i "./vms/$SESSION_VM.vm"
             connectModeLogin "$2" "$3"
             ;;
         -a | -admin )

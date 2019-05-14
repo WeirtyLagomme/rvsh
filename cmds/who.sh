@@ -4,6 +4,7 @@
 # $1 : vm name
 function who () {
     local vm_name="$1"
+    [[ -z $vm_name ]] && vm_name="$SESSION_VM"
     local vm_path="./vms/$vm_name.vm"
     local connected_users=$(getVar "$vm_path" "connected_users")
     local header="\n User\t\tConnected since\t\t\t\tID"
@@ -15,7 +16,7 @@ function who () {
 }
 
 function helpWho () {
-    echo "Returns a list of all users connected to the same virtual machine as you, along with their time and date of connection.
+    echo "[VMCO-ONLY]Returns a list of all users connected to the same virtual machine as you, along with their time and date of connection.
     
     > No arguments needed."
 }

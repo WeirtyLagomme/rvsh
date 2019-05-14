@@ -17,8 +17,7 @@ case $1 in
         helpMode
         ;;
     -t )
-        t="$2"
-        [[ $t =~ ^[A-Za-z0-9_]*$ ]] && echo "ok"
+        
         ;;
     * )
         error_msg="Invalid argument : the \"$1\" flag doesn't exists"

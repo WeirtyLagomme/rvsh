@@ -143,7 +143,7 @@ function unlinkHost () {
 }
 
 function helpHost () {
-    echo "As an administrator, allows you to add or remove virtual machines from the network, and manage their links.
+    echo "[ADMIN-ONLY]Allows you to add or remove virtual machines from the network, and manage their links.
     
     > host ( -a | -add, -r | -remove ) vm_name
     > host ( -l | -link, -ul | -unlink ) vm_name_1 vm_name_2" # TODO : must be able to (un)link more than 2 at the time
