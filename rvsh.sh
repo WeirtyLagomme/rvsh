@@ -4,7 +4,7 @@
 
 for file in ./*/*.sh; do source "$file"; done;
 
-# - - - - - < USE MODE > - - - - - #
+# - - - - - < SELECT MODE > - - - - - #
 
 case $1 in
     -c | -connect ) 
@@ -17,7 +17,6 @@ case $1 in
         helpMode
         ;;
     -t )
-        
         ;;
     * )
         error_msg="Invalid argument : the \"$1\" flag doesn't exists"
