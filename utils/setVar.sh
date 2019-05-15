@@ -25,7 +25,7 @@ function setVar () {
     fi
     local value="$4"
     # Value can't be empty in some modes
-    if [[ $mode != "empty" && -z $value ]]; then
+    if [[ $mode != "empty" && $mode != "remove" && -z $value ]]; then
         dispError "42" "Value received in setVar() was empty"
         return 1
     fi
@@ -43,6 +43,12 @@ function setVar () {
         "pop" )
             local fullVar=$(getVar "$file" "$name")
             sed -i 's/^'"$name"'=".*"$/'"$name"'="'"${fullVar/$value}"'"/' "$file"
+            ;;
+        "create" )
+            echo -ne "\n$name=\"$value\"" >> "$file"
+            ;;
+        "remove" )
+            sed -i '/^'"$name"'=".*"$/d' "$file"
             ;;
         * )
             dispError "42" "Set mode received by setVar() was incorrect"

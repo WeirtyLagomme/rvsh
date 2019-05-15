@@ -16,7 +16,7 @@ function users () {
     local username="$2"
     [[ -z $username ]] && dispError "3" "Missing argument : username" && return 1
     # Execute mode
-    $method ${@:2}
+    $method "${@:2}"
 }
 
 # $1 : username
