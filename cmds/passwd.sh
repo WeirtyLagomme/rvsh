@@ -4,24 +4,6 @@
 # $2 : new password
 # $3 : new password confirm
 function passwd () {
-    # Current password can't be empty
-    local curr_passwd="$1"
-    if [[ -z $curr_passwd ]]; then
-        dispError "3" "The current password can't be empty"
-        return 1
-    fi
-    # New password can't be empty
-    local new_passwd="$2"
-    if [[ -z $new_passwd ]]; then
-        dispError "3" "The new password can't be empty"
-        return 1
-    fi
-    # New password confirm can't be empty
-    local new_passwd_conf="$3"
-    if [[ -z $new_passwd_conf ]]; then
-        dispError "3" "The new password confirmation can't be empty"
-        return 1
-    fi
     # Check current password
     local usr=./usrs/$SESSION_USER.usr
     local correct_password=$(getVar "$usr" "password")

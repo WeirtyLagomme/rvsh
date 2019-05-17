@@ -2,12 +2,7 @@
 
 # $1 : vm_name
 function connect () {
-    # VM name can't be empty
     local vm_name="$1"
-    if [[ -z $vm_name ]]; then
-        dispError "3" "VM name is required to connect"
-        return 1
-    fi
     # Incorrect VM name
     local vm="./vms/$vm_name.vm"
     if [[ ! -e $vm ]]; then

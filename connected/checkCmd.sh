@@ -7,7 +7,9 @@ function checkCmd () {
     local args="${@:2}"
     local infos=$(help${cmd^})
     # Specified conditions
+    local cond_match
     checkUseConditions "$infos"
+    [[ -z $cond_match ]] && return 1
     # Format
     checkFormat "$infos" "$args"
 }
@@ -49,7 +51,7 @@ function checkFormat () {
 }
 
 function checkUseConditions () {
-    if [[ $infos =~ (\#\> .* \>) ]]; then
+    if [[ $infos =~ (\#\> .*) ]]; then
         local infos_cond=$(grep -o '#> .*' <<< "$infos")
         infos_cond=${infos_cond//\#> }
         local conditions=($infos_cond)
@@ -60,4 +62,6 @@ function checkUseConditions () {
             fi
         done
     fi
+    # Conditions matched
+    cond_match="true"
 }

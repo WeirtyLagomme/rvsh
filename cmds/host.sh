@@ -1,43 +1,5 @@
 #!/bin/bash
 
-# $1 : action mode
-# $2 : vm_name
-# $3 : second vm_name
-function host () {
-    # Action mode can't be empty
-    local action="$1"
-    if [[ -z $action ]]; then
-        dispError "3" "The action_mode argument must be specified"
-        return 1
-    fi
-    # VM name can't be empty
-    local vm_name="$2"
-    if [[ -z $vm_name ]]; then
-        dispError "3" "The vm_name argument must be specified"
-        return 1
-    fi
-    # Select mode
-    case $action in
-        -a | -add )
-            addHost "$vm_name"
-            ;;
-        -r | -remove )
-            removeHost "$vm_name"
-            ;;
-        -l | -link )
-            local sec_vm_name="$3"
-            linkHost "$vm_name" "$sec_vm_name"
-            ;;
-        -ul | -unlink )
-            local sec_vm_name="$3"
-            unlinkHost "$vm_name" "$sec_vm_name"
-            ;;
-        * )
-            dispError "3" "Wrong argument : \"$action\" isn't a valid action_mode"
-            return 1
-    esac
-}
-
 # $1 : vm_name
 function addHost () {
     local vm_name="$1"

@@ -15,6 +15,8 @@ function finger () {
         done
     else # All properties
         local props_lines="$(sed -n -e '/^info_/p' "./usrs/toto.usr")"
+        # No properties
+        [[ -z $props_lines ]] && dispNotif "2" "No information available" && return 1
         content="\n${props_lines//"info_"/\\n ${OR}::${NC} }"
         content="${content//=/" ${DI}>${NC} "}"
         content="${content//\"}"

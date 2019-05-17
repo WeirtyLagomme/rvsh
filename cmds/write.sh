@@ -3,12 +3,6 @@
 # $1 : username@vm_name
 # $2 : message
 function write () {
-    # Message target can't be empty
-    local target="$1"
-    if [[ -z $target ]]; then
-        dispError "3" "Missing argument : message target is required"
-        return 1
-    fi
     # Validate target format
     if [[ ! $target =~ ^[A-Za-z0-9_]*@[A-Za-z0-9_]*$ ]]; then
         dispError "3" "Incorrect message target format, needed username@vm_name"
@@ -26,12 +20,6 @@ function write () {
         dispError "3" "Incorrect vm_name : \"$vm_name\" doesn't exists"
         return 1
     fi
-    # Message  can't be empty
-    local msg=${2/"write $username@$vm_name "/}
-    if [[ -z $msg ]]; then
-        dispError "3" "Missing argument : message is required"
-        return 1
-    fi
     # User must be connected on VM
     local connected_users=$(getVar "./vms/$vm_name.vm" "connected_users")
     if [[ $connected_users != *($username,*,*)* ]]; then
@@ -45,5 +33,5 @@ function write () {
 function helpWrite () {
     echo "Send a message to any other user
     
-    > write username@vm_name message [user_id]"
+    > write username@vm_name message"
 }
