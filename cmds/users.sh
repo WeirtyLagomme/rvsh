@@ -1,24 +1,5 @@
 #!/bin/bash
 
-# $1 : mode
-# $2 : username
-# $3 : password || properties
-# $4 : admin || null
-# $5 : vm_name || null
-function users () {
-    # Mode shouldn't be empty
-    local mode="$1"
-    [[ -z $mode ]] && dispError "3" "Missing argument : mode" && return 1 # DO A FUCKING VERSION IF THIS IN DISPERROR
-    # Must be an available mode
-    local method=$(getMethod $mode)
-    [[ -z $method ]] && dispError "2" "The mode \"$mode\" doesn't exists" && return 1
-    # Username shouldn't be empty
-    local username="$2"
-    [[ -z $username ]] && dispError "3" "Missing argument : username" && return 1
-    # Execute mode
-    $method "${@:2}"
-}
-
 # $1 : username
 # $2 : password
 # $3 : [admin]
@@ -178,11 +159,8 @@ function updateUsers () {
 function helpUsers () {
     echo "Allows you to add, remove or manage user's password and virtual machine's access.
     
-    > users ( -a | -add ) username password admin [vm_name_1,vm_name_2...]
-    > users ( -r | -remove ) username
-    > users ( -u | -update ) username [password=new_password] [admin=( 0 | 1 )] [vms( + | - )=vm_name_1,vm_name_2...]"
-}
-
-function needUsers () {
-    echo "admin"
+    #> admin
+    > users -add username password admin [vm_name_1,vm_name_2...]
+    > users -remove username
+    > users -update username [password=new_password] [admin=(0|1)] [vms(+|-)=vm_name_1,vm_name_2...]"
 }

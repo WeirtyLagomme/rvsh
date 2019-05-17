@@ -36,5 +36,6 @@ function connect () {
 function helpConnect () {
     echo "Connect to another virtual machine linked to the one you're currently connected to.
 
+    #> connect
     > connect vm_name"
 }

@@ -63,9 +63,6 @@ function removeAfinger () {
 function helpAfinger () {
     echo "Add complementary information about any user
     
+    #> admin
     > afinger property_name=property_value_1,property_value_2... [property_name=property_value_1,property_value_2...]"
-}
-
-function needAfinger () {
-    echo "admin"
 }

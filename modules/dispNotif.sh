@@ -20,6 +20,9 @@ function dispNotif () {
         "1" )
             type="Users"
             ;;
+        "2" )
+            type="System"
+            ;;
     esac
     # Display message
     echo -e "\n[${GR}$type${NC}] $msg."

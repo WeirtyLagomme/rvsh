@@ -8,7 +8,7 @@ function help () {
         echo -e "\n [${GR}Help${NC}] All available commands for ${BL}users${NC} and ${OR}admins${NC}"
         for cmd in ./cmds/*.sh; do
             cmd_name=$(basename $cmd | cut -d. -f1)
-            local help_content="$(help${cmd_name^})"
+            local help_content=$(help${cmd_name^} | sed '/#>.*$/d')
             local color="${BL}"
             if [[ "$(type -t need${cmd_name^})" == "function" ]]; then
                 local need_cmd="$(need${cmd_name^})"
@@ -17,7 +17,7 @@ function help () {
             echo -e "\n [$color$cmd_name${NC}] ${help_content//>/$arrow}"
         done
     elif [[ -e "./cmds/$cmd_name.sh" ]]; then  
-        local help_content="$(help${cmd_name^})"
+        local help_content=$(help${cmd_name^} | sed -e 's/#->.*$//')
         local color="${BL}"
         [[ $help_content == *"[ADMIN-ONLY]"* ]] && color="${OR}" && help_content=${help_content//"[ADMIN-ONLY]"}
         echo -e "\n [$color$cmd_name${NC}] ${help_content//>/$arrow}"

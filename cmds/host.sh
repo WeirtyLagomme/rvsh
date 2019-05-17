@@ -4,11 +4,6 @@
 # $2 : vm_name
 # $3 : second vm_name
 function host () {
-    # Admin mode only
-    if [[ $SESSION_MODE != "admin" ]]; then
-        dispError "4" "You must be in admin mode in order to use this command"
-        return 1
-    fi
     # Action mode can't be empty
     local action="$1"
     if [[ -z $action ]]; then
@@ -142,13 +137,12 @@ function unlinkHost () {
     dispNotif "0" "\"vm_name\" and \"$sec_vm_name\" have been successfuly unlinked"
 }
 
-function helpHost () {
+function helpHost () { # TODO : must be able to (un)link more than 2 at the time
     echo "Allows you to add or remove virtual machines from the network, and manage their links.
     
-    > host ( -a | -add, -r | -remove ) vm_name
-    > host ( -l | -link, -ul | -unlink ) vm_name_1 vm_name_2" # TODO : must be able to (un)link more than 2 at the time
-}
-
-function needHost () {
-    echo "admin"
+    #> admin
+    > host -add vm_name
+    > host -remove vm_name
+    > host -link vm_name_1 vm_name_2
+    > host -unlink vm_name_1 vm_name_2"
 }
