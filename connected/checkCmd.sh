@@ -37,11 +37,13 @@ function checkFormat () {
     local syntax=$syntaxes
     [[ ! -z $mode ]] && syntax=$(grep -o '^'"$mode"'.*' <<< "$syntaxes" | cut -d ' ' -f2-)
     # Missing nth argument
-    local args_count=$(( $(wc -w <<< "$args") - 1 ))
+    local args_count=$(( $(wc -w <<< "$args") ))
+    # Don't count mode
+    [[ ! -z $mode ]] && args_count=$(( $args_count - 1 ))
     if (( $(wc -w <<< $syntax) > $args_count )); then
-        local missing_arg=$(cut -d ' ' -f $(($args_count + 1)) <<< $syntax)
-        dispError "3" "Missing argument : $missing_arg"
-        return 1
+        local missing_arg=$(cut -d ' ' -f $(( $args_count + 1 )) <<< $syntax)
+        # Only if arguments are required after mode
+        [[ $missing_arg != $syntax ]] && dispError "3" "Missing argument : $missing_arg" && return 1
     fi
     # Execute command
     local cmd=$cmd

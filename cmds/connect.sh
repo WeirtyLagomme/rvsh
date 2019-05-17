@@ -9,6 +9,8 @@ function connect () {
         dispError "3" "Incorrect VM name : \"$vm_name\" doesn't exists"
         return 1
     fi
+    # Same VM name as current
+    [[ $vm_name == $SESSION_VM ]] && dispError "3" "You're already connected to \"$vm_name\"" && return 1
     # VM must be linked
     local connected_vms=$(getVar "$vm" "connected_vms")
     if [[ $connected_vms != *"($SESSION_VM)"* ]]; then

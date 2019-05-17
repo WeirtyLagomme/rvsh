@@ -4,7 +4,7 @@
 function connectSu () {
     # Wipe current vm session if needed
     [[ ! -z $SESSION_VM ]] && sed -e s/"($SESSION_USER,$SESSION_START,$SESSION_ID)"//g -i "./vms/$SESSION_VM.vm"
-    connectModeLogin $1
+    connectModeLogin "$@"
 }
 
 function adminSu () {

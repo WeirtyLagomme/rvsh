@@ -17,7 +17,7 @@ function help () {
             echo -e "\n [$color$cmd_name${NC}] ${help_content//>/$arrow}"
         done
     elif [[ -e "./cmds/$cmd_name.sh" ]]; then  
-        local help_content=$(help${cmd_name^} | sed -e 's/#->.*$//')
+        local help_content=$(help${cmd_name^} | sed '/#>.*$/d')
         local color="${BL}"
         [[ $help_content == *"[ADMIN-ONLY]"* ]] && color="${OR}" && help_content=${help_content//"[ADMIN-ONLY]"}
         echo -e "\n [$color$cmd_name${NC}] ${help_content//>/$arrow}"

@@ -27,12 +27,14 @@ function dispError () {
             type="Argument"
             ;;
         "4" )
-            type="Privileges"
+            type="Mode"
             ;;
         "42" )
             type="Internal"
             ;;
     esac
     # Display message
-    echo -e "\n[${RE}$type error${NC}] $msg. Use ${CY}nvsh -h${NC} for help."
+    local help_syntax="nvsh -help"
+    [[ ! -z $SESSION_MODE ]] && help_syntax="help [command]"
+    echo -e "\n[${RE}$type error${NC}] $msg. Use ${CY}$help_syntax${NC} for more."
 }
