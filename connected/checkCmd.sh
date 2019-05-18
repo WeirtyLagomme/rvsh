@@ -7,9 +7,7 @@ function checkCmd () {
     local args="${@:2}"
     local infos=$(help${cmd^})
     # Specified conditions
-    local cond_match
-    checkUseConditions "$infos"
-    [[ -z $cond_match ]] && return 1
+    checkUseConditions "$infos" || return 1
     # Format
     checkFormat "$infos" "$args"
 }
@@ -19,7 +17,10 @@ function checkFormat () {
     # Command syntaxes : only required arguments
     local syntaxes=$(grep -o '[^#]> .*' <<< "$infos" | cut -d ' ' -f4- | cut -d "[" -f1 | sed -e 's/[[:space:]]*$//')
     # No arguments required
-    [[ -z $syntaxes ]] && $cmd $args && return 0
+    if [[ -z $syntaxes ]]; then
+        $cmd $args
+        return 0
+    fi
     # No arguments provided
     [[ -z $args ]] && dispError "3" "No arguments provided" && return 1
     # Mode needed
@@ -35,15 +36,18 @@ function checkFormat () {
     fi
     # Select syntax
     local syntax=$syntaxes
-    [[ ! -z $mode ]] && syntax=$(grep -o '^'"$mode"'.*' <<< "$syntaxes" | cut -d ' ' -f2-)
+    # Remove mode from syntax
+    if [[ ! -z $mode ]]; then
+        syntax=$(grep -o '^'"$mode"'.*' <<< "$syntaxes" | cut -d ' ' -f2-)
+        [[ $syntax == $mode ]] && syntax=""
+    fi
     # Missing nth argument
     local args_count=$(( $(wc -w <<< "$args") ))
     # Don't count mode
     [[ ! -z $mode ]] && args_count=$(( $args_count - 1 ))
     if (( $(wc -w <<< $syntax) > $args_count )); then
         local missing_arg=$(cut -d ' ' -f $(( $args_count + 1 )) <<< $syntax)
-        # Only if arguments are required after mode
-        [[ $missing_arg != $syntax ]] && dispError "3" "Missing argument : $missing_arg" && return 1
+        dispError "3" "Missing argument : $missing_arg" && return 1
     fi
     # Execute command
     local cmd=$cmd
@@ -52,7 +56,9 @@ function checkFormat () {
     $cmd $args
 }
 
+# $1 : infos
 function checkUseConditions () {
+    local infos="$1"
     if [[ $infos =~ (\#\> .*) ]]; then
         local infos_cond=$(grep -o '#> .*' <<< "$infos")
         infos_cond=${infos_cond//\#> }
@@ -64,6 +70,4 @@ function checkUseConditions () {
             fi
         done
     fi
-    # Conditions matched
-    cond_match="true"
 }
