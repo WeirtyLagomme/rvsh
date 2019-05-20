@@ -53,7 +53,7 @@ function addUsers () {
     # Create User file
     cp "./config/default.usr" "./usrs/$username.usr"
     # Fill user file
-    setVar "password" "./usrs/$username.usr" "push" "$password"
+    setVar "password" "./usrs/$username.usr" "push" "$(hash "$password")"
     [[ ! -z $admin ]] && setVar "admin" "./usrs/$username.usr" "push" "$admin"
     if [[ ! -z $vm_names ]]; then
         local vm_name
@@ -141,7 +141,7 @@ function updateUsers () {
                 return 1
             fi
             # Set new password
-            setVar "password" "./usrs/$username.usr" "replace" "$new_password"
+            setVar "password" "./usrs/$username.usr" "replace" "$(hash "$new_password")"
             dispNotif "1" "$username's password has been updated"
         fi
         # Manage admin privileges

@@ -82,7 +82,7 @@ function validateConnectPassword () {
     local username="$1"
     local usr=./usrs/$username.usr
     local correct_password=$(getVar "$usr" "password")
-    if [[ $password != $correct_password ]]; then
+    if [[ $(hash "$password") != $correct_password ]]; then
         echo ""
         dispError "0" "Incorrect password"
         return 1
