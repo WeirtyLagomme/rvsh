@@ -29,9 +29,9 @@ function checkFormat () {
         # Mode format
         [[ ! $args =~ ^\-.*$ ]] && dispError "3" "Incorrect mode format, it should look like \"-mode\"" && return 1 
         # Must be an available mode
-        local input_mode=$(cut -d ' ' -f1 <<< $args)
+        local input_mode=$(cut -d ' ' -f1 <<< "$args")
         method=$(getMethod $input_mode)
-        [[ -z $method ]] && dispError "2" "The mode \"$input_mode\" doesn't exists" && return 1
+        [[ -z $method ]] && dispError "2" "The mode ${OR}$input_mode${NC} doesn't exists" && return 1
         mode=$input_mode
     fi
     # Select syntax
@@ -46,9 +46,71 @@ function checkFormat () {
     # Don't count mode
     [[ ! -z $mode ]] && args_count=$(( $args_count - 1 ))
     if (( $(wc -w <<< $syntax) > $args_count )); then
-        local missing_arg=$(cut -d ' ' -f $(( $args_count + 1 )) <<< $syntax)
-        dispError "3" "Missing argument : $missing_arg" && return 1
+        local missing_arg=$(cut -d ' ' -f $(( $args_count + 1 )) <<< "$syntax")
+        # Remove argument's conditions
+        missing_arg=$(sed 's/{[^}]*}//g' <<< "$missing_arg")
+        dispError "3" "Missing argument : ${OR}$missing_arg${NC}" && return 1
     fi
+    # Arguments conditions
+    if [[ $syntax =~ [A-Za-z0-9_]*\{.*\} ]]; then
+        local args_split=($args)
+        [[ ! -z $mode ]] && args_split=($(cut -d ' ' -f2- <<< "$args"))
+        local syntax_split=($syntax)
+        local rematches=(${BASH_REMATCH[@]})
+        local rematch="0"
+        # Which argument needs conditions ? 
+        for i in "${!syntax_split[@]}"; do
+            # Split conditions
+            if [[ ${syntax_split[$i]} == ${rematches[$rematch]} ]]; then
+                local arg_value="${args_split[$i]}"
+                local arg_name=$(cut -d '{' -f1 <<< "${syntax_split[$i]}")
+                local arg_conds=($(cut -d '{' -f2 <<< "${syntax_split[$i]}" | sed -e 's/}//' -e "s/,/ /g"))
+                # Check conditions
+                for cond in "${arg_conds[@]}"; do
+                    local cond_name=$(cut -d ':' -f1 <<< "$cond")
+                    local cond_value=$(cut -d ':' -f2 <<< "$cond")
+                    # Min length
+                    if [[ $cond_name == "min" ]]; then
+                        if (( ${#arg_value} < $cond_value )); then
+                            dispError "3" "The ${OR}$arg_name${NC} value must have a minimum length of 3"
+                            return 1
+                        fi
+                    fi
+                    # Format
+                    if [[ $cond_name == "format" ]]; then
+                        if [[ $cond_value == "name" ]]; then
+                            if [[ ! $arg_value =~ ^[A-Za-z0-9_]*$ ]]; then
+                                dispError "3" "The ${OR}$arg_name${NC} format only accepts the following characters : [A-Za-z0-9_]"
+                                return 1
+                            fi
+                        else
+                            dispError "42" "Incorrect format type condition in ${OR}$arg_name${NC}"
+                            return 1
+                        fi
+                    fi
+                    # File existence
+                    if [[ $cond_name == "file" ]]; then
+                        if [[ $cond_value =~ ^"!"?("usr"|"vm")$ ]]; then
+                            local subject="virtual machine"
+                            [[ $cond_value =~ ^"!"?"usr"$ ]] && subject="user"
+                            if [[ $cond_value =~ ^"!" ]]; then
+                                cond_value=${cond_value//!}
+                                fileExists $arg_value $cond_value && dispError "3" "Incorrect $subject name : ${OR}$arg_value${NC} already exists" && return 1
+                            else
+                                fileExists $arg_value $cond_value || dispError "3" "Incorrect $subject name : ${OR}$arg_value${NC} doesn't exists" && return 1
+                            fi
+                        else
+                            dispError "42" "Incorrect format for file condition in ${OR}$arg_name${NC}"
+                            return 1
+                        fi
+                    fi
+                done
+                rematch=$(( $rematch + 1 ))
+            fi
+        done
+        return 1
+    fi
+    echo "no special" && return 1
     # Execute command
     local cmd=$cmd
     local args=$args

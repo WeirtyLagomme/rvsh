@@ -41,12 +41,7 @@ function removeHost () {
 # $2 : second vm_name
 function linkHost () {
     local vm_name="$1"
-    # Second vm name can't be empty
     local sec_vm_name="$2"
-    if [[ -z $sec_vm_name ]]; then
-        dispError "3" "The second vm_name argument must be specified"
-        return 1
-    fi
     # Incorrect VM names
     local vm_names=("$vm_name" "$sec_vm_name")
     for vmn in "${vm_names[@]}"; do
@@ -72,12 +67,7 @@ function linkHost () {
 # $2 : second vm_name
 function unlinkHost () {
     local vm_name="$1"
-    # Second vm name can't be empty
     local sec_vm_name="$2"
-    if [[ -z $sec_vm_name ]]; then
-        dispError "3" "The second vm_name argument must be specified"
-        return 1
-    fi
     # Incorrect VM names
     local vm_names=("$vm_name" "$sec_vm_name")
     for vmn in "${vm_names[@]}"; do
@@ -96,14 +86,14 @@ function unlinkHost () {
     # Delete link
     setVar "connected_vms" "./vms/$vm_name.vm" "pop" "($sec_vm_name)"
     setVar "connected_vms" "./vms/$sec_vm_name.vm" "pop" "($vm_name)"
-    dispNotif "0" "\"vm_name\" and \"$sec_vm_name\" have been successfuly unlinked"
+    dispNotif "0" "The virtual machines ${OR}$vm_name${NC} and ${OR}$sec_vm_name${NC} have been successfuly unlinked"
 }
 
 function helpHost () { # TODO : must be able to (un)link more than 2 at the time
     echo "Allows you to add or remove virtual machines from the network, and manage their links.
     
     #> admin
-    > host -add vm_name
+    > host -add vm_name{file:!vm}
     > host -remove vm_name
     > host -link vm_name_1 vm_name_2
     > host -unlink vm_name_1 vm_name_2"

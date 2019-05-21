@@ -16,6 +16,6 @@ function adminSu () {
 function helpSu () {
     echo "Allows you to switch between users.
     
-    > su -connect vm_name username
+    > su -connect vm_name{file:!vm} username{file:usr}
     > su -admin"
 }
