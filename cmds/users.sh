@@ -5,37 +5,9 @@
 # $3 : [admin]
 # $4 : [vm_name | (vm_name...)]
 function addUsers () {
-    # username must be available
     local username="$1"
-    if [[ -e "./usrs/$username.usr" ]]; then
-        dispError "3" "The username \"$username\" isn't available"
-        return 1
-    fi
-    # Username min length is 3
-    if (( ${#username} < 3 )); then
-        dispError "3" "Username must have a min length of 3"
-        return 1
-    fi
-    # Validate username format
-    if [[ ! $username =~ ^[A-Za-z0-9_]*$ ]]; then
-        dispError "3" "Username can only contain the following caracters : [A-Za-z0-9_]"
-        return 1
-    fi
-    # password min length is 3
     local password="$2"
-    if (( ${#password} < 3 )); then
-        dispError "3" "Password must have a min length of 3"
-        return 1
-    fi
-    # Validate password format
-    if [[ ! $password =~ ^[A-Za-z0-9_]*$ ]]; then
-        dispError "3" "Password can only contain the following caracters : [A-Za-z0-9_]"
-        return 1
-    fi
-    # Validate admin
     local admin="$3"
-    # Admin shouldn't be empty
-    [[ -z $admin ]] && dispError "3" "Missing argument : admin" && return 1
     [[ $admin != "0" && $admin != "1" ]] && dispError "3" "The admin argument must be either 0 or 1" && return 1
     # Validate vms
     local vm_names="$4"
@@ -44,7 +16,7 @@ function addUsers () {
         if [[ $vm_names =~ ^([A-Za-z0-9_]*,?)*$ ]]; then
             IFS=',' read -r -a auth_vm_names <<< "$vm_names"
             for i in "${auth_vm_names[@]}"; do
-                [[ ! -e "./vms/${auth_vm_names[$i]}.vm" ]] && dispError "3" "There's no vm named \"${auth_vm_names[$i]}\"" && return 1
+                [[ ! -e "./vms/${auth_vm_names[$i]}.vm" ]] && dispError "3" "There's no vm named ${OR}${auth_vm_names[$i]}${NC}" && return 1
             done
         else # Wrong format
             dispError "3" "Wrong vm_name(s) format : vm_name_1,vm_name_2..." && return 1
@@ -54,7 +26,7 @@ function addUsers () {
     cp "./config/default.usr" "./usrs/$username.usr"
     # Fill user file
     setVar "password" "./usrs/$username.usr" "push" "$(hash "$password")"
-    [[ ! -z $admin ]] && setVar "admin" "./usrs/$username.usr" "push" "$admin"
+    setVar "admin" "./usrs/$username.usr" "push" "$admin"
     if [[ ! -z $vm_names ]]; then
         local vm_name
         for vm_name in "${auth_vm_names[@]}"; do
@@ -62,27 +34,24 @@ function addUsers () {
             setVar "authorized_vms" "./usrs/$username.usr" "push" "($vm_name)"
         done
     fi
-    dispNotif "0" "The user \"$username\" has been successfuly created"
+    dispNotif "0" "The user ${OR}$username${NC} has been successfuly created"
 }
 
 # $1 : username
 function removeUsers () {
     local username="$1"
-    # User must exists
-    local user="./usrs/$username.usr"
-    [[ ! -e $user ]] && dispError "3" "The user \"$username\" doesn't exists" && return 1
     # Remove from vms auth
     local authorized_vms=$(getVar "./usrs/$username.usr" "authorized_vms")
     authorized_vms=${authorized_vms//(}
-    local auth_vm_names=()
+    local auth_vm_names=() # No longer need to read, just sed replace with spaces in array
     IFS=')' read -r -a auth_vm_names <<< "$authorized_vms"
     local vm_name
     for vm_name in "${auth_vm_names[@]}"; do
         setVar "authorized_users" "./vms/$vm_name.vm" "pop" "($username)"
     done
     # Delete user file
-    rm "$user"
-    dispNotif "1" "The user \"$username\" has been successfuly deleted"
+    rm "./usrs/$username.usr"
+    dispNotif "1" "The user ${OR}$username${NC} has been successfuly deleted"
     # If current user, logout
     checkAccount
 }
@@ -97,7 +66,7 @@ function updateUsers () {
     for property in "${properties[@]}"; do
         # Check format
         if [[ ! $property =~ ^[A-Za-z0-9_]{1,}(\+|\-)?=([A-Za-z0-9_]{1,},?){1,}$ ]]; then
-            dispError "3" "Wrong format for property : \"$property\"" && return 1
+            dispError "3" "Wrong format for property : ${OR}$property${NC}" && return 1
         fi
         # Manage vms
         if [[ $property =~ ^vms(\+|\-)= ]]; then
@@ -107,7 +76,7 @@ function updateUsers () {
             local auth_vm_names=(${vm_names//,/ })
             # VMS must exist
             for auth_vm_name in "${auth_vm_names[@]}"; do
-                [[ ! -e "./vms/$auth_vm_name.vm" ]] && dispError "3" "There's no vm named \"$auth_vm_name\"" && return 1
+                [[ ! -e "./vms/$auth_vm_name.vm" ]] && dispError "3" "There's no vm named ${OR}$auth_vm_name${NC}" && return 1
             done
             # Push or Pop
             local action="push"
@@ -125,7 +94,7 @@ function updateUsers () {
             # Notif
             local vm_update_notif="now"
             [[ $action == "pop" ]] && vm_update_notif="no longer"
-            dispNotif "1" "The user \"$username\" is $vm_update_notif authorized to connect to the following virtual machine(s) : ${vm_names//,/, }"
+            dispNotif "1" "The user ${OR}$username${NC} is $vm_update_notif authorized to connect to the following virtual machine(s) : ${vm_names//,/, }"
         fi
         # Manage password
         if [[ $property =~ ^password= ]]; then
@@ -160,7 +129,7 @@ function helpUsers () {
     echo "Allows you to add, remove or manage user's password and virtual machine's access.
     
     #> admin
-    > users -add username password admin [vm_name_1,vm_name_2...]
-    > users -remove username
-    > users -update username [password=new_password] [admin=(0|1)] [vms(+|-)=vm_name_1,vm_name_2...]"
+    > users -add username{file:!usr,format:name,min:3} password{format:name,min:3} admin [vm_name_1,vm_name_2...]
+    > users -remove username{file:usr}
+    > users -update username{file:usr} [password=new_password] [admin=(0|1)] [vms(+|-)=vm_name_1,vm_name_2...]"
 }

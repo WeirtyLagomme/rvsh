@@ -46,6 +46,6 @@ function helpAfinger () {
     echo "Add complementary information about any user
     
     #> admin
-    > afinger -add username property_name=property_value_1,property_value_2... [property_name=property_value_1,property_value_2...]
-    > afinger -remove username property_name [property_name...]"
+    > afinger -add username{file:usr} property_name=property_value_1,property_value_2... [property_name=property_value_1,property_value_2...]
+    > afinger -remove username{file:usr} property_name [property_name...]"
 }

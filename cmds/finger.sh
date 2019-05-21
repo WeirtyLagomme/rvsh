@@ -10,7 +10,7 @@ function finger () {
         for prop in "${properties[@]}"; do
             local prop_value="$(getVar "./usrs/$SESSION_USER.usr" "info_$prop")"
             # All properties must exist
-            [[ -z $prop_value ]] && dispNotif "1" "The property \"$prop\" doesn't exists" && continue
+            [[ -z $prop_value ]] && dispNotif "1" "The property ${OR}$prop${NC} doesn't exists" && continue
             content+="\n\n ${OR}::${NC} $prop ${DI}>${NC} $prop_value"
         done
     else # All properties

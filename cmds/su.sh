@@ -3,14 +3,17 @@
 # $1 : args
 function connectSu () {
     # Wipe current vm session if needed
-    [[ ! -z $SESSION_VM ]] && sed -e s/"($SESSION_USER,$SESSION_START,$SESSION_ID)"//g -i "./vms/$SESSION_VM.vm"
-    connectModeLogin "$@"
+    wipeSession && connectModeLogin "$@"
 }
 
 function adminSu () {
     # Wipe current vm session if needed
+    wipeSession && adminModeLogin
+}
+
+function wipeSession () {
     [[ ! -z $SESSION_VM ]] && sed -e s/"($SESSION_USER,$SESSION_START,$SESSION_ID)"//g -i "./vms/$SESSION_VM.vm"
-    adminModeLogin
+    return 0
 }
 
 function helpSu () {

@@ -91,14 +91,9 @@ function checkFormat () {
                     # File existence
                     if [[ $cond_name == "file" ]]; then
                         if [[ $cond_value =~ ^"!"?("usr"|"vm")$ ]]; then
-                            local subject="virtual machine"
-                            [[ $cond_value =~ ^"!"?"usr"$ ]] && subject="user"
-                            if [[ $cond_value =~ ^"!" ]]; then
-                                cond_value=${cond_value//!}
-                                fileExists $arg_value $cond_value && dispError "3" "Incorrect $subject name : ${OR}$arg_value${NC} already exists" && return 1
-                            else
-                                fileExists $arg_value $cond_value || dispError "3" "Incorrect $subject name : ${OR}$arg_value${NC} doesn't exists" && return 1
-                            fi
+                            local should_exists="true"
+                            [[ $cond_value =~ ^"!" ]] && should_exists="false" && cond_value=${cond_value//!}
+                            fileExists "$arg_value" "$cond_value" "3" "$should_exists" || return 1
                         else
                             dispError "42" "Incorrect format for file condition in ${OR}$arg_name${NC}"
                             return 1

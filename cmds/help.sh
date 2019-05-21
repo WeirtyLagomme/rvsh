@@ -13,7 +13,7 @@ function help () {
             local color="${BL}"
             [[ ! -z $(grep '#>.*admin.*' <<< "$help_content") ]] && color="${OR}"
             # Remove conditions infos & argument's conditions
-            help_content=$(sed '/#>.*$/d' <<< "$help_content" | sed 's/{[^}]*}//g')
+            help_content=$(sed '/#>.*$/d' <<< "$help_content" | sed -e 's/{[^}]*}//g' -e 's/[[:space:]]*$//')
             echo -e "\n [$color$cmd${NC}] ${help_content//>/$arrow}"
         done
     elif [[ -e "./cmds/$cmd.sh" ]]; then  
@@ -24,7 +24,7 @@ function help () {
         help_content=$(sed '/#>.*$/d' <<< "$help_content" | sed 's/{[^}]*}//g')
         echo -e "\n [$color$cmd${NC}] ${help_content//>/$arrow}"
     else
-        dispError "3" "The \"$cmd\" command doesn't exists"
+        dispError "3" "The ${OR}$cmd${NC} command doesn't exists"
     fi
 }
 
