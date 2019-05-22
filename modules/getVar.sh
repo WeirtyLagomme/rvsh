@@ -15,7 +15,11 @@ function getVar () {
         # File must exists
         dispError "42" "File provided in the \"getVar\" function doesn't exist"
     else
-        # Return variable value
-        echo $(awk -F'"' '/^'"$var"'=/ {print $2}' $file)
+        # variable value
+        local var_value=$(awk -F'"' '/^'"$var"'=/ {print $2}' $file)
+        # Parse array
+        [[ $var_value =~ ^\(.*\)$ ]] && var_value=$(sed -e 's/(//g' -e 's/)/ /g' <<< "$var_value")
+        # Return value
+        echo "$var_value"
     fi
 }

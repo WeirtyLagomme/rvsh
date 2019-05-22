@@ -41,12 +41,8 @@ function addUsers () {
 function removeUsers () {
     local username="$1"
     # Remove from vms auth
-    local authorized_vms=$(getVar "./usrs/$username.usr" "authorized_vms")
-    authorized_vms=${authorized_vms//(}
-    local auth_vm_names=() # No longer need to read, just sed replace with spaces in array
-    IFS=')' read -r -a auth_vm_names <<< "$authorized_vms"
-    local vm_name
-    for vm_name in "${auth_vm_names[@]}"; do
+    local authorized_vms=($(getVar "./usrs/$username.usr" "authorized_vms"))
+    for vm_name in "${authorized_vms[@]}"; do
         setVar "authorized_users" "./vms/$vm_name.vm" "pop" "($username)"
     done
     # Delete user file

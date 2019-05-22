@@ -33,6 +33,9 @@ function asyncExec () {
         checkInbox
         # Account still active
         checkAccount
+        # Current VM still exists
+        checkVm
+        # Wait a bit
         sleep 2
     done
 }

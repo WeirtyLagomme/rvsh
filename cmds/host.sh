@@ -11,8 +11,15 @@ function addHost () {
 # $1 : vm_name
 function removeHost () {
     local vm_name="$1"
+    local vm_path="./vms/$vm_name.vm"
+    # Remove vm from user's auth
+    local authorized_users=($(getVar "$vm_path" "authorized_users"))
+    local connected_users=($(getVar "$vm_path" "connected_users"))
+    for username in "${authorized_users[@]}"; do
+        setVar "authorized_vms" "./usrs/$username.usr" "pop" "($vm_name)"
+    done
     # Delete VM file
-    rm "./vms/$vm_name.vm"
+    rm "$vm_path"
     dispNotif "0" "The ${OR}$vm_name${NC} virtual machine has been successfuly deleted"
 }
 

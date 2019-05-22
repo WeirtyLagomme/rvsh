@@ -11,11 +11,10 @@ function displayMessages () {
     local unread_msgs="$1"
     echo -ne "\n\n [${OR}Message${NC}] You received new message(s)"
     # Split messages
-    local msgs=()
-    IFS=')' read -r -a msgs <<< "$unread_msgs"
+    local msgs=($unread_msgs)
     for (( i=0; i<${#msgs[@]}; i++)); do
-        local msg=${msgs[i]/(}
-        local sender=$(echo $msg | cut -d, -f1)
+        local msg=${msgs[i]}
+        local sender=$(cut -d, -f1 <<< "$msg")
         local content=${msg/$sender,}
         echo -ne "\n\n [${CY}$sender${NC}]\n\n $content"
         # Set prompt back
