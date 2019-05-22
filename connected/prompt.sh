@@ -20,15 +20,14 @@ function promptCommand () {
     while read -e -p "$(buildPrompt)" cmd args; do
         # Save input to history if not empty
         [[ ! -z $cmd ]] && history -s "$cmd $args"
-        # Must be an available command
-        [[ ! -e "./cmds/$cmd.sh" ]] && dispError "2" "The command \"$cmd\" doesn't exists" && continue
+        # Save input to log
+        echo -e "$(date)\t$cmd $args" >> "./logs/$SESSION_USER.log"
         # Check & execute command
         checkCmd $cmd $args
     done
 }
 
 function asyncExec () {
-    # Echo unread messages
     while [[ true ]]; do
         # Message inbox
         checkInbox
