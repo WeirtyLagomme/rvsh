@@ -4,10 +4,10 @@
 # $@:2 : args
 function checkCmd () {
     local cmd="$1"
-    local args="${@:2}"
-    local infos=$(help${cmd^})
     # Must be an available command
     [[ ! -e "./cmds/$cmd.sh" ]] && dispError "2" "The command ${OR}$cmd${NC} doesn't exists" && return 1
+    local args="${@:2}"
+    local infos=$(help${cmd^})
     # Specified conditions
     checkUseConditions "$infos" || return 1
     # Format
@@ -105,9 +105,7 @@ function checkFormat () {
                 rematch=$(( $rematch + 1 ))
             fi
         done
-        return 1
     fi
-    echo "no special" && return 1
     # Execute command
     local cmd=$cmd
     local args=$args

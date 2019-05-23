@@ -2,21 +2,21 @@
 
 # $1 : username
 # $2 : password
-# $3 : [admin]
-# $4 : [vm_name | (vm_name...)]
+# $3 : admin
+# ${@:4} : vm_names
 function addUsers () {
     local username="$1"
     local password="$2"
     local admin="$3"
     [[ $admin != "0" && $admin != "1" ]] && dispError "3" "The admin argument must be either 0 or 1" && return 1
     # Validate vms
-    local vm_names="$4"
-    local auth_vm_names=()
-    if [[ ! -z $vm_names ]]; then # Could work with diff args instead of using ","
-        if [[ $vm_names =~ ^([A-Za-z0-9_]*,?)*$ ]]; then
-            IFS=',' read -r -a auth_vm_names <<< "$vm_names"
-            for i in "${auth_vm_names[@]}"; do
-                [[ ! -e "./vms/${auth_vm_names[$i]}.vm" ]] && dispError "3" "There's no vm named ${OR}${auth_vm_names[$i]}${NC}" && return 1
+    local vm_names="${@:4}"
+    local auth_vm_names
+    if [[ ! -z $vm_names ]]; then 
+        if [[ $vm_names =~ ^([A-Za-z0-9_]*[[:space:]]?)*$ ]]; then
+            auth_vm_names=($vm_names)
+            for vm_name in "${auth_vm_names[@]}"; do
+                [[ ! -e "./vms/$vm_name.vm" ]] && dispError "3" "There's no vm named ${OR}vm_name${NC}" && return 1
             done
         else # Wrong format
             dispError "3" "Wrong vm_name(s) format : vm_name_1,vm_name_2..." && return 1
@@ -28,7 +28,6 @@ function addUsers () {
     setVar "password" "./usrs/$username.usr" "push" "$(hash "$password")"
     setVar "admin" "./usrs/$username.usr" "push" "$admin"
     if [[ ! -z $vm_names ]]; then
-        local vm_name
         for vm_name in "${auth_vm_names[@]}"; do
             setVar "authorized_users" "./vms/$vm_name.vm" "push" "($username)"
             setVar "authorized_vms" "./usrs/$username.usr" "push" "($vm_name)"

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# $1 : properties
+# $@ : properties
 function finger () {
     local properties=("$@")
     local content
