@@ -39,7 +39,7 @@ function linkHost () {
     done
     # Already linked
     local connected_vms=$(getVar "./vms/$vm_name.vm" "connected_vms")
-    if [[ $connected_vms == *"($sec_vm_name)"* ]]; then
+    if [[ $connected_vms =~ (^|[[:space:]])$sec_vm_name($|[[:space:]]) ]]; then
         dispError "3" "${OR}$vm_name${NC} and ${OR}$sec_vm_name${NC} are already linked"
         return 1
     fi
@@ -65,7 +65,7 @@ function unlinkHost () {
     done
     # Already linked
     local connected_vms=$(getVar "./vms/$vm_name.vm" "connected_vms")
-    if [[ $connected_vms != *"($sec_vm_name)"* ]]; then
+    if [[ ! $connected_vms =~ (^|[[:space:]])$sec_vm_name($|[[:space:]]) ]]; then
         dispError "3" "${OR}$vm_name${NC} and ${OR}$sec_vm_name${NC} are not linked"
         return 1
     fi
@@ -79,7 +79,7 @@ function helpHost () { # TODO : must be able to (un)link more than 2 at the time
     echo "Allows you to add or remove virtual machines from the network, and manage their links.
     
     #> admin
-    > host -add vm_name{file:!vm,format:name,min:3}
+    > host -add vm_name{file:!vm,format:norm,min:3}
     > host -remove vm_name{file:vm}
     > host -link vm_name_1{file:vm} vm_name_2{file:vm}
     > host -unlink vm_name_1{file:vm} vm_name_2{file:vm}"

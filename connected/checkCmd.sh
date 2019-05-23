@@ -80,7 +80,7 @@ function checkFormat () {
                     fi
                     # Format
                     if [[ $cond_name == "format" ]]; then
-                        if [[ $cond_value == "name" ]]; then
+                        if [[ $cond_value == "norm" ]]; then
                             if [[ ! $arg_value =~ ^[A-Za-z0-9_]*$ ]]; then
                                 dispError "3" "The ${OR}$arg_name${NC} format only accepts the following characters : [A-Za-z0-9_]"
                                 return 1

@@ -81,8 +81,8 @@ function updateUsers () {
             for auth_vm_name in "${auth_vm_names[@]}"; do
                 local currently_auth_vms="$(getVar "./usrs/$username.usr" "authorized_vms")"
                 # Don't push twice or pop if it isn't necessary
-                [[ $action == "push" ]] && [[ $currently_auth_vms == *"($auth_vm_name)"* ]] && continue
-                [[ $action == "pop" ]] && [[ $currently_auth_vms != *"($auth_vm_name)"* ]] && continue
+                [[ $action == "push" ]] && [[ $currently_auth_vms =~ (^|[[:space:]])$auth_vm_name($|[[:space:]]) ]] && continue
+                [[ $action == "pop" ]] && [[ ! $currently_auth_vms =~ (^|[[:space:]])$auth_vm_name($|[[:space:]]) ]] && continue
                 # Do the job
                 setVar "authorized_users" "./vms/$auth_vm_name.vm" "$action" "($username)"
                 setVar "authorized_vms" "./usrs/$username.usr" "$action" "($auth_vm_name)"
@@ -125,7 +125,7 @@ function helpUsers () {
     echo "Allows you to add, remove or manage user's password and virtual machine's access.
     
     #> admin
-    > users -add username{file:!usr,format:name,min:3} password{format:name,min:3} admin [vm_name_1,vm_name_2...]
+    > users -add username{file:!usr,format:norm,min:3} password{format:norm,min:3} admin [vm_name_1,vm_name_2...]
     > users -remove username{file:usr}
     > users -update username{file:usr} [password=new_password] [admin=(0|1)] [vms(+|-)=vm_name_1,vm_name_2...]"
 }

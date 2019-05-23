@@ -27,5 +27,5 @@ function passwd () {
 function helpPasswd () {
     echo "Change your password.
     
-    > passwd current_password new_password{min:3,format:name} confirm_new_password"
+    > passwd current_password new_password{min:3,format:norm} confirm_new_password"
 }
