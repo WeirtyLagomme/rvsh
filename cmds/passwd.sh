@@ -6,12 +6,7 @@
 function passwd () {
     # Check current password
     local curr_passwd="$1"
-    local usr=./usrs/$SESSION_USER.usr
-    local correct_password=$(getVar "$usr" "password")
-    if [[ $(hash "$curr_passwd") != $correct_password ]]; then
-        dispError "0" "Incorrect current password"
-        return 1
-    fi
+    checkPassword "$SESSION_USER" "$curr_passwd" || dispError "0" "Incorrect current password" && return 1
     # New password and confirmation must be equal
     local new_passwd_conf="$3"
     if [[ $new_passwd != $new_passwd_conf ]]; then

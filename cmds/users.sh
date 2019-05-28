@@ -80,8 +80,8 @@ function updateUsers () {
             for auth_vm_name in "${auth_vm_names[@]}"; do
                 local currently_auth_vms="$(getVar "./usrs/$username.usr" "authorized_vms")"
                 # Don't push twice or pop if it isn't necessary
-                [[ $action == "push" ]] && [[ $currently_auth_vms =~ (^|[[:space:]])$auth_vm_name($|[[:space:]]) ]] && continue
-                [[ $action == "pop" ]] && [[ ! $currently_auth_vms =~ (^|[[:space:]])$auth_vm_name($|[[:space:]]) ]] && continue
+                [[ $action == "push" ]] && isInVar "$auth_vm_name" "./usrs/$username.usr" "authorized_vms" && continue
+                [[ $action == "pop" ]] && isInVar "$auth_vm_name" "./usrs/$username.usr" "authorized_vms" || continue
                 # Do the job
                 setVar "authorized_users" "./vms/$auth_vm_name.vm" "$action" "($username)"
                 setVar "authorized_vms" "./usrs/$username.usr" "$action" "($auth_vm_name)"

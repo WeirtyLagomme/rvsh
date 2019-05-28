@@ -16,7 +16,7 @@ function adminModeLogin () {
     while [[ $password_validated != 0 ]]; do
         echo -ne "\n => Password: "
         read -s password
-        validateAdminPassword $username $password && password_validated=0
+        validateAdminPassword $password $username && password_validated=0
     done
     echo -e "\n\n[${GR}Admin mode${NC}] Successfuly Authenticated"
     # Start session
@@ -26,49 +26,28 @@ function adminModeLogin () {
 # Check username validity
 # $1 : username
 function validateAdminUsername () {
-    # Username can't be empty
     local username="$1"
-    if [[ -z $username ]]; then
-        echo ""
-        dispError "0" "Username can't be empty"
-        return 1
-    fi
+    # Username can't be empty
+    [[ -z $username ]] && echo "" && dispError "0" "Username can't be empty" && return 1
     # Incorrect username
-    local usr=./usrs/$username.usr
-    if [[ ! -e $usr ]]; then
-        echo ""
-        dispError "0" "Incorrect username : there is no user named \"$username\""
-        return 1
-    fi
+    fileExists "$username" "usr" "0" "true" || echo "" && return 1
     # User isn't admin
-    local admin=$(getVar "$usr" "admin")
-    if [[ $admin == "0" ]]; then
-        echo ""
-        dispError "0" "\"$username\" doesn't have admin privileges"
-        return 1
-    fi
+    local admin=$(getVar "./usrs/$username.usr" "admin")
+    [[ $admin == "0" ]] && echo "" && dispError "0" "\"$username\" doesn't have admin privileges" && return 1
+    # No errors
     return 0
 }
 
 # Check admin's password validity
-# $1 : username
-# $2 : password
+# $1 : password
+# $2 : username
 function validateAdminPassword () {
+    local password="$1"
     # Password can't be empty
-    local password="$2"
-    if [[ -z $password ]]; then
-        echo ""
-        dispError "0" "Password can't be empty"
-        return 1
-    fi
+    [[ -z $password ]] && echo "" && dispError "0" "Password can't be empty" && return 1
     # Incorrect password
-    local username="$1"
-    local usr=./usrs/$username.usr
-    local correct_password=$(getVar "$usr" "password")
-    if [[ $(hash "$password") != $correct_password ]]; then
-        echo ""
-        dispError "0" "Incorrect password"
-        return 1
-    fi
+    local username="$2"
+    checkPassword "$username" "$password" || echo "" && dispError "0" "Incorrect password" && return 1
+    # No errors
     return 0
 }

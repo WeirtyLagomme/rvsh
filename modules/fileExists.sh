@@ -17,12 +17,9 @@ function fileExists () {
     # Error message
     local subject="virtual machine "
     [[ $type == "usr" ]] && subject="user"
+    local word="already"
     # Check file
-    if [[ ! -e "./${type}s/$name.$type" ]]; then
-        [[ $exists == "false" ]] && return 0
-        dispError "$error" "Incorrect ${subject}name : ${OR}$name${NC} doesn't exists" && return 1
-    else
-        [[ $exists == "true" ]] && return 0
-        dispError "$error" "Incorrect ${subject}name : ${OR}$name${NC} already exists" && return 1
-    fi
+    [[ $exists == "false" ]] && [[ ! -e "./${type}s/$name.$type" ]] && return 0
+    [[ $exists == "true" ]] && word="doesn't" && [[ -e "./${type}s/$name.$type" ]] && return 0
+    dispError "$error" "Incorrect ${subject}name : ${OR}$name${NC} $word exists" && return 1
 }

@@ -38,8 +38,7 @@ function linkHost () {
         fi
     done
     # Already linked
-    local connected_vms=$(getVar "./vms/$vm_name.vm" "connected_vms")
-    if [[ $connected_vms =~ (^|[[:space:]])$sec_vm_name($|[[:space:]]) ]]; then
+    if isInVar "$sec_vm_name" "./vms/$vm_name.vm" "connected_vms"; then
         dispError "3" "${OR}$vm_name${NC} and ${OR}$sec_vm_name${NC} are already linked"
         return 1
     fi
@@ -64,8 +63,7 @@ function unlinkHost () {
         fi
     done
     # Already linked
-    local connected_vms=$(getVar "./vms/$vm_name.vm" "connected_vms")
-    if [[ ! $connected_vms =~ (^|[[:space:]])$sec_vm_name($|[[:space:]]) ]]; then
+    if ! isInVar "$sec_vm_name" "./vms/$vm_name.vm" "connected_vms"; then 
         dispError "3" "${OR}$vm_name${NC} and ${OR}$sec_vm_name${NC} are not linked"
         return 1
     fi

@@ -7,14 +7,12 @@ function connect () {
     # Same VM name as current
     [[ $vm_name == $SESSION_VM ]] && dispError "3" "You're already connected to ${OR}$vm_name${NC}" && return 1
     # VM must be linked
-    local connected_vms=$(getVar "$vm" "connected_vms")
-    if [[ ! $connected_vms =~ (^|[[:space:]])$SESSION_VM($|[[:space:]]) ]]; then
+    if ! isInVar "$SESSION_VM" "$vm" "connected_vms"; then
         dispError "3" "Your current virtual machine \"$SESSION_VM\" isn't linked to ${OR}$vm_name${NC}"
         return 1
     fi
     # User must be authorized on VM
-    local authorized_users=$(getVar "$vm" "authorized_users")
-    if [[ ! $authorized_users =~ (^|[[:space:]])$SESSION_USER($|[[:space:]]) ]]; then
+    if ! isInVar "$SESSION_USER" "$vm" "authorized_users"; then 
         dispError "4" "You're not authorized to connect to ${OR}$vm_name${NC}"
         return 1
     fi
