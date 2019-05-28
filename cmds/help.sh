@@ -6,12 +6,13 @@ function help () {
     local arrow="${GR}->${NC}"
     local content=""
     if [[ -z $cmd ]]; then
-        echo -e "\n [${GR}Help${NC}] All available commands for ${BL}users${NC} and ${OR}admins${NC}"
+        echo -e "\n [${GR}Help${NC}] All available commands for ${BL}all users${NC}, ${MA}connect mode${NC} and ${OR}admin mode${NC}"
         for cmd in ./cmds/*.sh; do
             cmd=$(basename $cmd | cut -d. -f1)
             local help_content=$(help${cmd^})
             local color="${BL}"
             [[ ! -z $(grep '#>.*admin.*' <<< "$help_content") ]] && color="${OR}"
+            [[ ! -z $(grep '#>.*connect.*' <<< "$help_content") ]] && color="${MA}"
             # Remove conditions infos & argument's conditions
             help_content=$(sed '/#>.*$/d' <<< "$help_content" | sed -e 's/{[^}]*}//g' -e 's/[[:space:]]*$//')
             echo -e "\n [$color$cmd${NC}] ${help_content//>/$arrow}"
@@ -20,6 +21,7 @@ function help () {
         local help_content=$(help${cmd^})
         local color="${BL}"
         [[ ! -z $(grep '#>.*admin.*' <<< "$help_content") ]] && color="${OR}"
+        [[ ! -z $(grep '#>.*connect.*' <<< "$help_content") ]] && color="${MA}"
         # Remove conditions infos & argument's conditions
         help_content=$(sed '/#>.*$/d' <<< "$help_content" | sed 's/{[^}]*}//g')
         echo -e "\n [$color$cmd${NC}] ${help_content//>/$arrow}"

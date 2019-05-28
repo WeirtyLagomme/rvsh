@@ -18,6 +18,7 @@ case $1 in
         ;;
     -t )
         sessionStart "admin" "tom"
+        echo -e "\n IDEAS : Handle mkdir, touch, cd & ls in ./vm_name/* and share files between connected vms"
         ;;
     * )
         error_msg="Invalid argument : the \"$1\" flag doesn't exists"

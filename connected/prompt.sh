@@ -22,6 +22,8 @@ function promptCommand () {
         [[ ! -z $cmd ]] && history -s "$cmd $args"
         # Save input to log
         echo -e "$(date)\t$cmd $args" >> "./logs/$SESSION_USER.log"
+        # Builtins cmds
+        [[ ! -z "$(grep '^'"$cmd"'$' "./config/builtins.conf")" ]] && $cmd $args && continue
         # Check & execute command
         checkCmd $cmd $args
     done
