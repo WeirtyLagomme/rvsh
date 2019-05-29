@@ -28,9 +28,9 @@ function connectModeLogin () {
 function validateVM () {
     local vm_name="$1"
     # VM name can't be empty
-    [[ -z $vm_name ]] && dispError "1" "VM name is required to connect" && return 1
+    [[ -z $vm_name ]] && dispError "1" "Virtual machine name is required to connect" && return 1
     # Incorrect VM name
-    fileExists "$vm_name" "vm" "1" "true" || echo "" && return 1
+    entityExists "true" "vm" "$vm_name" "1" || echo "" && return 1
     # No errors
     return 0
 }
@@ -43,7 +43,7 @@ function validateUser () {
     # VM name can't be empty
     [[ -z $username ]] && dispError "1" "Username is required to connect" && return 1
     # Incorrect username
-    fileExists "$username" "usr" "0" "true" || echo "" && return 1
+    entityExists "true" "usr" "$username" "0" || echo "" && return 1
     # User must be authorized on VM
     local vm_name="$2"
     if ! isInFile "./vms/$vm_name/auths" "$username"; then 

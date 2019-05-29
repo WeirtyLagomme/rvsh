@@ -30,7 +30,7 @@ function validateAdminUsername () {
     # Username can't be empty
     [[ -z $username ]] && echo "" && dispError "0" "Username can't be empty" && return 1
     # Incorrect username
-    fileExists "$username" "usr" "0" "true" || echo "" && return 1
+    entityExists "true" "usr" "$username" "0" || echo "" && return 1
     # User isn't admin
     local admin=$(getVar "./usrs/$username/profile" "admin")
     [[ $admin == "0" ]] && echo "" && dispError "0" "\"$username\" doesn't have admin privileges" && return 1

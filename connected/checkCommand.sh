@@ -2,7 +2,7 @@
 
 # $1 : cmd
 # $@:2 : args
-function checkCmd () {
+function checkCommand () {
     local cmd="$1"
     # Must be an available command
     [[ ! -e "./cmds/$cmd.sh" ]] && dispError "2" "The command ${OR}$cmd${NC} doesn't exists" && return 1
@@ -95,7 +95,7 @@ function checkFormat () {
                         if [[ $cond_value =~ ^"!"?("usr"|"vm")$ ]]; then
                             local should_exists="true"
                             [[ $cond_value =~ ^"!" ]] && should_exists="false" && cond_value=${cond_value//!}
-                            fileExists "$arg_value" "$cond_value" "3" "$should_exists" || return 1
+                            entityExists "$should_exists" "$cond_value" "$arg_value" "3" || return 1
                         else
                             dispError "42" "Incorrect format for file condition in ${OR}$arg_name${NC}"
                             return 1

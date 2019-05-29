@@ -27,7 +27,7 @@ function promptCommand () {
         # Builtins cmds
         [[ ! -z "$(grep '^'"$cmd"'$' "./config/builtins.conf")" ]] && $cmd $args && continue
         # Check & execute command
-        checkCmd $cmd $args
+        checkCommand $cmd $args
     done
 }
 

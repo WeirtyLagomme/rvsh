@@ -1,3 +1,36 @@
 mer. 29 mai 2019 18:42:27	|	admin		|	help afinger
 mer. 29 mai 2019 18:42:52	|	admin		|	izuegh 
 mer. 29 mai 2019 18:43:01	|	admin		|	help users
+mer. 29 mai 2019 22:16:09	|	admin		|	help 
+mer. 29 mai 2019 22:16:23	|	admin		|	afingerz 
+mer. 29 mai 2019 22:16:24	|	admin		|	afinger 
+mer. 29 mai 2019 22:16:29	|	admin		|	help afinger
+mer. 29 mai 2019 22:16:44	|	admin		|	afinger -remove toto
+mer. 29 mai 2019 22:16:48	|	admin		|	afinger -remove toto zeg
+mer. 29 mai 2019 22:22:42	|	admin		|	afinger 
+mer. 29 mai 2019 22:22:45	|	admin		|	afinger zef
+mer. 29 mai 2019 22:22:49	|	admin		|	afinger -zjhgb
+mer. 29 mai 2019 22:22:53	|	admin		|	afinger -remove
+mer. 29 mai 2019 22:22:54	|	admin		|	afinger -remove zeg
+mer. 29 mai 2019 22:22:57	|	admin		|	afinger -remove zeg zef
+mer. 29 mai 2019 22:23:38	|	admin		|	afinger -remove toto
+mer. 29 mai 2019 22:23:46	|	admin		|	afinger -remove toto efg
+mer. 29 mai 2019 22:24:10	|	admin		|	afinger -add toto a=bonjour
+mer. 29 mai 2019 22:24:26	|	admin		|	afinger -add toto b=ca,va,?
+mer. 29 mai 2019 22:25:04	|	admin		|	afinger -remove toto a b
+mer. 29 mai 2019 22:25:15	|	admin		|	connect 
+mer. 29 mai 2019 22:25:25	|	admin		|	su 
+mer. 29 mai 2019 22:25:27	|	admin		|	help su
+mer. 29 mai 2019 22:25:35	|	admin		|	su -connect disco toto
+mer. 29 mai 2019 22:26:17	|	admin		|	su -connect disco toto
+mer. 29 mai 2019 22:26:31	|	admin		|	who 
+mer. 29 mai 2019 22:27:58	|	admin		|	su -connect ihj zoieg
+mer. 29 mai 2019 22:28:03	|	admin		|	su -connect disco zheikfgb
+mer. 29 mai 2019 22:28:08	|	admin		|	su -connect disco toto
+mer. 29 mai 2019 22:31:16	|	admin		|	su -connect disco toto
+mer. 29 mai 2019 22:33:15	|	admin		|	su -connect disco toto
+mer. 29 mai 2019 22:33:39	|	admin		|	su -connect disco toto
+mer. 29 mai 2019 22:34:51	|	admin		|	su -connect disco toto
+mer. 29 mai 2019 22:35:32	|	admin		|	su -connect disco toto
+mer. 29 mai 2019 22:36:57	|	admin		|	su -connect disco toto
+mer. 29 mai 2019 22:38:58	|	admin		|	su -connect disco toto

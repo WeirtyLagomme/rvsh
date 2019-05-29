@@ -21,6 +21,6 @@ function wipeSession () {
 function helpSu () {
     echo "Allows you to switch between users.
     
-    > su -connect vm_name{file:!vm} username{file:usr}
+    > su -connect vm_name{file:vm} username{file:usr}
     > su -admin"
 }
