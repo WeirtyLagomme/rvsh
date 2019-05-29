@@ -12,7 +12,9 @@ function adminSu () {
 }
 
 function wipeSession () {
-    [[ ! -z $SESSION_VM ]] && sed -e s/"($SESSION_USER,$SESSION_START,$SESSION_ID)"//g -i "./vms/$SESSION_VM.vm"
+    if [[ ! -z $SESSION_VM ]]; then
+        fileStream "remove" "./vms/$SESSION_VM/sessions" "$SESSION_USER,$SESSION_START,$SESSION_ID"
+    fi
     return 0
 }
 

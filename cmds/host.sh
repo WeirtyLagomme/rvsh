@@ -3,23 +3,20 @@
 # $1 : vm_name
 function addHost () {
     local vm_name="$1"
-    # Create VM file
-    echo $(cat ./config/default.vm) >> "./vms/$vm_name.vm"
+    # Create vm directory
+    mkdir "./vms/$vm_name" && cp -R "./config/defaults/vm/." $_
     dispNotif "0" "The ${OR}$vm_name${NC} virtual machine has been successfuly created"
 }
 
 # $1 : vm_name
 function removeHost () {
     local vm_name="$1"
-    local vm_path="./vms/$vm_name.vm"
     # Remove vm from user's auth
-    local authorized_users=($(getVar "$vm_path" "authorized_users"))
-    local connected_users=($(getVar "$vm_path" "connected_users"))
-    for username in "${authorized_users[@]}"; do
-        setVar "authorized_vms" "./usrs/$username.usr" "pop" "($vm_name)"
-    done
+    while read username; do
+        sed -i '/^'"$vm_name"'$/d' "./usrs/$username/auths"
+    done < "./vms/$vm_name/auths"
     # Delete VM file
-    rm "$vm_path"
+    rm -rf "./vms/$vm_name"
     dispNotif "0" "The ${OR}$vm_name${NC} virtual machine has been successfuly deleted"
 }
 
@@ -31,20 +28,16 @@ function linkHost () {
     # Incorrect VM names
     local vm_names=("$vm_name" "$sec_vm_name")
     for vmn in "${vm_names[@]}"; do
-        local vm="./vms/$vmn.vm"
-        if [[ ! -e $vm ]]; then
-            dispError "3" "Incorrect VM name : ${OR}$vmn${NC} doesn't exists"
-            return 1
-        fi
+        entityExists "true" "vm" "$vmn" "3" || return 1
     done
     # Already linked
-    if isInVar "$sec_vm_name" "./vms/$vm_name.vm" "connected_vms"; then
+    if isInFile "./vms/$vm_name/links" "$sec_vm_name"; then
         dispError "3" "${OR}$vm_name${NC} and ${OR}$sec_vm_name${NC} are already linked"
         return 1
     fi
     # Create link
-    setVar "connected_vms" "./vms/$vm_name.vm" "push" "($sec_vm_name)"
-    setVar "connected_vms" "./vms/$sec_vm_name.vm" "push" "($vm_name)"
+    fileStream "append" "./vms/$vm_name/links" "$sec_vm_name"
+    fileStream "append" "./vms/$sec_vm_name/links" "$vm_name"
     dispNotif "0" "${OR}$vm_name${NC} and ${OR}$sec_vm_name${NC} have been successfuly linked"
 }
 
@@ -56,20 +49,16 @@ function unlinkHost () {
     # Incorrect VM names
     local vm_names=("$vm_name" "$sec_vm_name")
     for vmn in "${vm_names[@]}"; do
-        local vm="./vms/$vmn.vm"
-        if [[ ! -e $vm ]]; then
-            dispError "3" "Incorrect VM name : ${OR}$vmn${NC} doesn't exists"
-            return 1
-        fi
+        entityExists "true" "vm" "$vmn" "3" || return 1
     done
-    # Already linked
-    if ! isInVar "$sec_vm_name" "./vms/$vm_name.vm" "connected_vms"; then 
+    # Already unlinked
+    if ! isInFile "./vms/$vm_name/links" "$sec_vm_name"; then 
         dispError "3" "${OR}$vm_name${NC} and ${OR}$sec_vm_name${NC} are not linked"
         return 1
     fi
     # Delete link
-    setVar "connected_vms" "./vms/$vm_name.vm" "pop" "($sec_vm_name)"
-    setVar "connected_vms" "./vms/$sec_vm_name.vm" "pop" "($vm_name)"
+    fileStream "remove" "./vms/$vm_name/links" "$sec_vm_name"
+    fileStream "remove" "./vms/$sec_vm_name/links" "$vm_name"
     dispNotif "0" "The virtual machines ${OR}$vm_name${NC} and ${OR}$sec_vm_name${NC} have been successfuly unlinked"
 }
 

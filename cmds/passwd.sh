@@ -14,7 +14,7 @@ function passwd () {
         return 1
     fi
     # Set new password
-    setVar "password" "./usrs/$SESSION_USER.usr" "replace" "$(hash "$new_passwd")"
+    setVar "password" "./usrs/$SESSION_USER/profile" "replace" "$(hash "$new_passwd")"
     dispNotif "1" "$SESSION_USER's password has been updated"
 }
 

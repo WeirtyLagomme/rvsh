@@ -1,12 +1,11 @@
 #!/bin/bash
 
 function rhost () {
-    local vm_path="./vms/$SESSION_VM.vm"
-    local connected_vms=$(getVar "$vm_path" "connected_vms")
-    local header="\n Linked machines"
+    local connected_vms=$(cat "./vms/$SESSION_VM/links")
+    local header="\n Linked virtual machines"
     echo -e "$header"
     local line=" "
-    for (( i=0; i<15; i++ )); do line+="-"; done
+    for (( i=0; i<22; i++ )); do line+="-"; done
     echo "$line"
     echo "$connected_vms" | sed 'y/\(\)/  /'
 }

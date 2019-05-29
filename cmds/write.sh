@@ -14,12 +14,11 @@ function write () {
     local vm_name=$(cut -d@ -f2 <<< "$target")
     fileExists "$vm_name" "vm" "3" "true" || return 1
     # User must be connected on VM
-    local connected_users=$(getVar "./vms/$vm_name.vm" "connected_users")
-    if [[ $connected_users != *($username,*,*)* ]]; then
+    if ! isInFile "./vms/$vm_name/sessions" "$username"; then
         dispError "3" "${OR}$username${NC} isn't connected to the ${OR}$vm_name${NC} virtual machine" && return 1
     fi
     # Send message
-    setVar "unread_msgs" "./usrs/$username.usr" "push" "($SESSION_USER,$msg)"
+    echo "$(date) $SESSION_USER $message" >> "./usrs/$username/msgs/unread"
 }
 
 function helpWrite () {

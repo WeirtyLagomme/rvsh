@@ -1,8 +1,10 @@
 #!/bin/bash
 
 function finish () {
-    # Clear session from VM
-    [[ ! -z $SESSION_VM ]] && sed -e s/"($SESSION_USER,$SESSION_START,$SESSION_ID)"//g -i "./vms/$SESSION_VM.vm"
+    # Clear session from vm
+    if [[ ! -z $SESSION_VM ]]; then
+        fileStream "remove" "./vms/$SESSION_VM/sessions" "$SESSION_USER,$SESSION_START,$SESSION_ID"
+    fi
     # Kill async process, redirect various errors to null
     kill $async_exec_pid > /dev/null 2>&1
     kill $current_input_pid > /dev/null 2>&1

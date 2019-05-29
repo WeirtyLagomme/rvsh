@@ -32,7 +32,7 @@ function validateAdminUsername () {
     # Incorrect username
     fileExists "$username" "usr" "0" "true" || echo "" && return 1
     # User isn't admin
-    local admin=$(getVar "./usrs/$username.usr" "admin")
+    local admin=$(getVar "./usrs/$username/profile" "admin")
     [[ $admin == "0" ]] && echo "" && dispError "0" "\"$username\" doesn't have admin privileges" && return 1
     # No errors
     return 0

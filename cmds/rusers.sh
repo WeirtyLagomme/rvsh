@@ -1,8 +1,9 @@
 #!/bin/bash
 
 function rusers () {
-    for vm in ./vms/*.vm; do
-        local vm_name=$(basename $vm | cut -d. -f1)
+    ls "./vms/*/" &>/dev/null || dispNotif "0" "No existing virtual machines" && return 1
+    for vm in "./vms/*/"; do
+        local vm_name=$(basename $vm)
         echo -e "\n [${BL}$vm_name${NC}]"
         who "$vm_name"
     done

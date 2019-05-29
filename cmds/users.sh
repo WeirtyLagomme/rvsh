@@ -16,21 +16,21 @@ function addUsers () {
         if [[ $vm_names =~ ^([A-Za-z0-9_]*[[:space:]]?)*$ ]]; then
             auth_vm_names=($vm_names)
             for vm_name in "${auth_vm_names[@]}"; do
-                [[ ! -e "./vms/$vm_name.vm" ]] && dispError "3" "There's no vm named ${OR}vm_name${NC}" && return 1
+                entityExists "true" "vm" "$vm_name" "3" || return 1
             done
         else # Wrong format
             dispError "3" "Wrong vm_name(s) format : vm_name_1,vm_name_2..." && return 1
         fi
     fi
-    # Create User file
-    cp "./config/default.usr" "./usrs/$username.usr"
+    # Create user directory
+    mkdir "./usrs/alak" && cp -R "./config/defaults/usr/." $_
     # Fill user file
-    setVar "password" "./usrs/$username.usr" "push" "$(hash "$password")"
-    setVar "admin" "./usrs/$username.usr" "push" "$admin"
+    setVar "password" "./usrs/$username/profile" "push" "$(hash "$password")"
+    setVar "admin" "./usrs/$username/profile" "push" "$admin"
     if [[ ! -z $vm_names ]]; then
         for vm_name in "${auth_vm_names[@]}"; do
-            setVar "authorized_users" "./vms/$vm_name.vm" "push" "($username)"
-            setVar "authorized_vms" "./usrs/$username.usr" "push" "($vm_name)"
+            fileStream "append" "./vms/$vm_name/auths" "$username"
+            echo "$vm_name" >> "./usrs/$username/auths"
         done
     fi
     dispNotif "0" "The user ${OR}$username${NC} has been successfuly created"
@@ -40,12 +40,11 @@ function addUsers () {
 function removeUsers () {
     local username="$1"
     # Remove from vms auth
-    local authorized_vms=($(getVar "./usrs/$username.usr" "authorized_vms"))
-    for vm_name in "${authorized_vms[@]}"; do
-        setVar "authorized_users" "./vms/$vm_name.vm" "pop" "($username)"
-    done
+    while read vm_name; do
+        fileStream "remove" "./vms/$vm_name/auths" "$username"
+    done < "./usrs/$username/auths"
     # Delete user file
-    rm "./usrs/$username.usr"
+    rm -rf "./usrs/$username"
     dispNotif "1" "The user ${OR}$username${NC} has been successfuly deleted"
     # If current user, logout
     checkAccount
@@ -71,20 +70,20 @@ function updateUsers () {
             local auth_vm_names=(${vm_names//,/ })
             # VMS must exist
             for auth_vm_name in "${auth_vm_names[@]}"; do
-                [[ ! -e "./vms/$auth_vm_name.vm" ]] && dispError "3" "There's no vm named ${OR}$auth_vm_name${NC}" && return 1
+                entityExists "true" "vm" "$auth_vm_name" "3" || return 1
             done
             # Push or Pop
             local action="push"
             [[ $property == *"-="* ]] && action="pop"
             # Update vms auths
             for auth_vm_name in "${auth_vm_names[@]}"; do
-                local currently_auth_vms="$(getVar "./usrs/$username.usr" "authorized_vms")"
+                local currently_auth_vms=$(grep '/^'"$auth_vm_name"'$/' "./usrs/$username/auths")
                 # Don't push twice or pop if it isn't necessary
-                [[ $action == "push" ]] && isInVar "$auth_vm_name" "./usrs/$username.usr" "authorized_vms" && continue
-                [[ $action == "pop" ]] && isInVar "$auth_vm_name" "./usrs/$username.usr" "authorized_vms" || continue
+                [[ $action == "push" ]] && [[ -z $currently_auth_vms ]] && continue
+                [[ $action == "pop" ]] && [[ ! -z $currently_auth_vms ]] && continue
                 # Do the job
-                setVar "authorized_users" "./vms/$auth_vm_name.vm" "$action" "($username)"
-                setVar "authorized_vms" "./usrs/$username.usr" "$action" "($auth_vm_name)"
+                echo "$username" >> "./vms/$auth_vm_name/auths"
+                echo "$auth_vm_name" >> "./usrs/$username/auths"
             done
             # Notif
             local vm_update_notif="now"
@@ -105,7 +104,7 @@ function updateUsers () {
                 return 1
             fi
             # Set new password
-            setVar "password" "./usrs/$username.usr" "replace" "$(hash "$new_password")"
+            setVar "password" "./usrs/$username/profile" "replace" "$(hash "$new_password")"
             dispNotif "1" "$username's password has been updated"
         fi
         # Manage admin privileges
@@ -114,7 +113,7 @@ function updateUsers () {
             [[ -z $admin ]] && dispError "3" "Missing value for the admin property" && return 1
             [[ $admin != "0" && $admin != "1" ]] && dispError "3" "Incorrect value for the admin property" && return 1
             # Set admin property
-            setVar "admin" "./usrs/$username.usr" "replace" "$admin"
+            setVar "admin" "./usrs/$username/profile" "replace" "$admin"
             dispNotif "1" "$username's admin privileges have been updated"
         fi
     done

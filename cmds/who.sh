@@ -5,8 +5,7 @@
 function who () {
     local vm_name="$1"
     [[ -z $vm_name ]] && vm_name="$SESSION_VM"
-    local vm_path="./vms/$vm_name.vm"
-    local connected_users=$(getVar "$vm_path" "connected_users")
+    local connected_users=$(cat "./vms/$vm_name/sessions")
     local header="\n User\t\tConnected since\t\t\t\tID"
     echo -e "$header"
     local line=" "

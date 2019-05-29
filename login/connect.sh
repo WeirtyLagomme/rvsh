@@ -46,7 +46,7 @@ function validateUser () {
     fileExists "$username" "usr" "0" "true" || echo "" && return 1
     # User must be authorized on VM
     local vm_name="$2"
-    if ! isInVar "$username" "./vms/$vm_name.vm" "authorized_users"; then 
+    if ! isInFile "./vms/$vm_name/auths" "$username"; then 
         dispError "1" "You're not authorized to connect to \"$vm_name\""
         return 1
     fi

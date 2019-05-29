@@ -1,26 +1,26 @@
 #!/bin/bash
 
 function checkInbox () {
-    local unread_msgs=$(getVar "./usrs/$SESSION_USER.usr" "unread_msgs")
-    [[ -z $unread_msgs ]] && return 0
-    displayMessages "$unread_msgs"
+    [[ -s "./usrs/$SESSION_USER/msgs/unread" ]] && displayUnreadMessages || return 0
 }
 
-# $1 : unread_msgs
-function displayMessages () {
-    local unread_msgs="$1"
-    echo -ne "\n\n [${OR}Message${NC}] You received new message(s)"
-    # Split messages
-    local msgs=($unread_msgs)
-    for (( i=0; i<${#msgs[@]}; i++)); do
-        local msg=${msgs[i]}
-        local sender=$(cut -d, -f1 <<< "$msg")
-        local content=${msg/$sender,}
-        echo -ne "\n\n [${CY}$sender${NC}]\n\n $content"
-        # Set prompt back
-        echo -ne "\n$(buildPrompt)"
-        # Send message to reads
-        setVar "read_msgs" "./usrs/$SESSION_USER.usr" "push" "$unread_msgs"
-        setVar "unread_msgs" "./usrs/$SESSION_USER.usr" "pop" "$unread_msgs"
-    done
+
+function displayUnreadMessages () {
+    # Set file path
+    local unread="./usrs/$SESSION_USER/msgs/unread"
+    # Display command header
+    echo -ne "\n\n [${OR}Message${NC}] You received $(wc -l $unread) new message(s)"
+    # Format and display messages
+    while read line; do
+        # Split fields
+        local date=$(cut -d ' ' -f1 <<< "$line")
+        local sender=$(cut -d ' ' -f2 <<< "$line")
+        local message=$(cut -d ' ' -f3- <<< "$line")
+        # Display message
+        echo -ne "\n\n [${BL}$sender${NC}] ${DI}$date${NC}\n\n $message"
+    done < "$unread"
+    # Transfer messages from unread to read and clear unread
+    cat "$unread" >> "./usrs/$SESSION_USER/msgs/read" && > "$unread"
+    # Reset prompt
+    echo -ne "\n$(buildPrompt)"
 }
