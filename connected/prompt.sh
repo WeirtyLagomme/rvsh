@@ -21,7 +21,9 @@ function promptCommand () {
         # Save input to history if not empty
         [[ ! -z $cmd ]] && history -s "$cmd $args"
         # Save input to log
-        echo -e "$(date)\t$cmd $args" >> "./logs/$SESSION_USER.log"
+        local log_mode="$SESSION_VM"
+        [[ -z $log_mode ]] && log_mode="admin"
+        echo -e "$(date)\t|\t$log_mode\t\t|\t$cmd $args" >> "./logs/$SESSION_USER.log"
         # Builtins cmds
         [[ ! -z "$(grep '^'"$cmd"'$' "./config/builtins.conf")" ]] && $cmd $args && continue
         # Check & execute command
