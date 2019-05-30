@@ -1,0 +1,279 @@
+mer. 29 mai 2019 23:34:41	|	disco		|	help 
+mer. 29 mai 2019 23:34:50	|	disco		|	ls 
+mer. 29 mai 2019 23:35:55	|	disco		|	ls 
+mer. 29 mai 2019 23:36:23	|	disco		|	ls 
+mer. 29 mai 2019 23:39:08	|	disco		|	ls 
+mer. 29 mai 2019 23:39:47	|	disco		|	ls 
+mer. 29 mai 2019 23:41:48	|	disco		|	ls 
+jeu. 30 mai 2019 00:10:07	|	disco		|	ls 
+jeu. 30 mai 2019 00:29:39	|	disco		|	ls 
+jeu. 30 mai 2019 00:30:43	|	disco		|	ls 
+jeu. 30 mai 2019 00:30:49	|	disco		|	ls ./test
+jeu. 30 mai 2019 00:31:18	|	disco		|	ls ./test
+jeu. 30 mai 2019 00:32:11	|	disco		|	help touch
+jeu. 30 mai 2019 00:32:18	|	disco		|	touch hola
+jeu. 30 mai 2019 00:32:20	|	disco		|	ls 
+jeu. 30 mai 2019 00:32:34	|	disco		|	ls 
+jeu. 30 mai 2019 16:57:16	|	disco		|	ls 
+jeu. 30 mai 2019 16:57:25	|	disco		|	touch hum
+jeu. 30 mai 2019 16:57:30	|	disco		|	ls 
+jeu. 30 mai 2019 16:57:55	|	disco		|	ls 
+jeu. 30 mai 2019 16:58:20	|	disco		|	ls 
+jeu. 30 mai 2019 16:58:33	|	disco		|	ls 
+jeu. 30 mai 2019 16:59:18	|	disco		|	touch ./a/b
+jeu. 30 mai 2019 16:59:28	|	disco		|	ls 
+jeu. 30 mai 2019 17:01:05	|	disco		|	ls ./a/b
+jeu. 30 mai 2019 17:05:14	|	disco		|	ls 
+jeu. 30 mai 2019 17:05:21	|	disco		|	ls ./a/b
+jeu. 30 mai 2019 17:05:28	|	disco		|	ls /
+jeu. 30 mai 2019 17:07:16	|	disco		|	ls //a
+jeu. 30 mai 2019 17:08:39	|	disco		|	ls 
+jeu. 30 mai 2019 17:08:45	|	disco		|	ls ./a
+jeu. 30 mai 2019 17:08:59	|	disco		|	ls 
+jeu. 30 mai 2019 17:09:01	|	disco		|	ls ./a
+jeu. 30 mai 2019 17:13:27	|	disco		|	ls 
+jeu. 30 mai 2019 17:13:30	|	disco		|	ls a
+jeu. 30 mai 2019 17:13:56	|	disco		|	ls a
+jeu. 30 mai 2019 17:14:32	|	disco		|	ls a
+jeu. 30 mai 2019 17:14:41	|	disco		|	ls ./
+jeu. 30 mai 2019 17:14:43	|	disco		|	ls /
+jeu. 30 mai 2019 17:14:49	|	disco		|	ls ./hola
+jeu. 30 mai 2019 17:14:54	|	disco		|	ls hola
+jeu. 30 mai 2019 17:14:58	|	disco		|	ls /hola
+jeu. 30 mai 2019 17:15:13	|	disco		|	ls 
+jeu. 30 mai 2019 17:16:55	|	disco		|	ls 
+jeu. 30 mai 2019 17:16:58	|	disco		|	ls /
+jeu. 30 mai 2019 17:16:59	|	disco		|	ls /
+jeu. 30 mai 2019 17:17:01	|	disco		|	ls ./
+jeu. 30 mai 2019 17:17:06	|	disco		|	ls ./h
+jeu. 30 mai 2019 17:17:15	|	disco		|	ls ./hola
+jeu. 30 mai 2019 17:22:59	|	disco		|	ls 
+jeu. 30 mai 2019 17:23:10	|	disco		|	ls 
+jeu. 30 mai 2019 17:23:42	|	disco		|	ls /
+jeu. 30 mai 2019 17:23:44	|	disco		|	ls 
+jeu. 30 mai 2019 17:23:55	|	disco		|	help ls
+jeu. 30 mai 2019 17:24:13	|	disco		|	help ls
+jeu. 30 mai 2019 17:24:15	|	disco		|	ls 
+jeu. 30 mai 2019 17:24:18	|	disco		|	help mkdir
+jeu. 30 mai 2019 17:24:28	|	disco		|	mkdir ./1
+jeu. 30 mai 2019 17:24:29	|	disco		|	ls 
+jeu. 30 mai 2019 17:24:42	|	disco		|	touch 1/hey
+jeu. 30 mai 2019 17:24:46	|	disco		|	ls 1
+jeu. 30 mai 2019 17:27:57	|	disco		|	ls 1
+jeu. 30 mai 2019 17:28:02	|	disco		|	ls 
+jeu. 30 mai 2019 17:28:06	|	disco		|	cd zef
+jeu. 30 mai 2019 17:28:10	|	disco		|	cd 1
+jeu. 30 mai 2019 17:28:34	|	disco		|	cd ./1
+jeu. 30 mai 2019 17:28:44	|	disco		|	ls 
+jeu. 30 mai 2019 17:28:47	|	disco		|	cd /1
+jeu. 30 mai 2019 17:29:26	|	disco		|	cd 1
+jeu. 30 mai 2019 17:30:50	|	disco		|	ls 
+jeu. 30 mai 2019 17:30:52	|	disco		|	cd 1
+jeu. 30 mai 2019 17:32:43	|	disco		|	ls 
+jeu. 30 mai 2019 17:32:46	|	disco		|	cd ./1
+jeu. 30 mai 2019 17:33:33	|	disco		|	cd /ziuegh
+jeu. 30 mai 2019 17:33:40	|	disco		|	ls 
+jeu. 30 mai 2019 17:35:29	|	disco		|	cd 
+jeu. 30 mai 2019 17:35:32	|	disco		|	cd /1
+jeu. 30 mai 2019 17:36:11	|	disco		|	cd ./1
+jeu. 30 mai 2019 17:37:45	|	disco		|	cd 1
+jeu. 30 mai 2019 17:38:47	|	disco		|	cd ./1
+jeu. 30 mai 2019 17:39:37	|	disco		|	cd 1
+jeu. 30 mai 2019 17:40:00	|	disco		|	mkdir test
+jeu. 30 mai 2019 17:40:02	|	disco		|	ls 
+jeu. 30 mai 2019 17:40:07	|	disco		|	cd ./test
+jeu. 30 mai 2019 17:40:14	|	disco		|	ls 
+jeu. 30 mai 2019 17:40:17	|	disco		|	cd ./test
+jeu. 30 mai 2019 17:41:24	|	disco		|	ls ../
+jeu. 30 mai 2019 17:41:37	|	disco		|	ls ../../../../
+jeu. 30 mai 2019 17:45:43	|	disco		|	ls 
+jeu. 30 mai 2019 17:45:52	|	disco		|	ls /
+jeu. 30 mai 2019 20:30:04	|	disco		|	ls 
+jeu. 30 mai 2019 20:30:25	|	disco		|	ls 
+jeu. 30 mai 2019 20:32:11	|	disco		|	ls 
+jeu. 30 mai 2019 20:35:18	|	disco		|	ls 
+jeu. 30 mai 2019 20:35:27	|	disco		|	ls 
+jeu. 30 mai 2019 20:35:58	|	disco		|	ls 
+jeu. 30 mai 2019 20:36:55	|	disco		|	ls 
+jeu. 30 mai 2019 20:41:54	|	disco		|	ls 
+jeu. 30 mai 2019 20:42:09	|	disco		|	ls 
+jeu. 30 mai 2019 20:44:06	|	disco		|	ls 
+jeu. 30 mai 2019 20:44:23	|	disco		|	ls 
+jeu. 30 mai 2019 20:45:09	|	disco		|	ls 
+jeu. 30 mai 2019 20:45:51	|	disco		|	ls 
+jeu. 30 mai 2019 20:46:03	|	disco		|	ls 1
+jeu. 30 mai 2019 20:46:09	|	disco		|	ls 684
+jeu. 30 mai 2019 20:46:12	|	disco		|	ls /1
+jeu. 30 mai 2019 20:46:26	|	disco		|	ls ./1
+jeu. 30 mai 2019 20:46:44	|	disco		|	ls ./1
+jeu. 30 mai 2019 20:47:08	|	disco		|	ls 
+jeu. 30 mai 2019 20:50:17	|	disco		|	ls 
+jeu. 30 mai 2019 20:50:24	|	disco		|	ls /1
+jeu. 30 mai 2019 20:50:30	|	disco		|	ls ./1
+jeu. 30 mai 2019 20:53:48	|	disco		|	ls 
+jeu. 30 mai 2019 20:54:05	|	disco		|	ls 
+jeu. 30 mai 2019 20:54:14	|	disco		|	ls ./1
+jeu. 30 mai 2019 20:56:32	|	disco		|	ls 
+jeu. 30 mai 2019 20:56:35	|	disco		|	ls ./1
+jeu. 30 mai 2019 20:58:18	|	disco		|	ls 1
+jeu. 30 mai 2019 20:58:35	|	disco		|	ls 
+jeu. 30 mai 2019 20:58:55	|	disco		|	ls 1
+jeu. 30 mai 2019 20:59:10	|	disco		|	ls 
+jeu. 30 mai 2019 20:59:12	|	disco		|	ls /
+jeu. 30 mai 2019 20:59:16	|	disco		|	ls /1
+jeu. 30 mai 2019 20:59:18	|	disco		|	ls 1
+jeu. 30 mai 2019 21:02:09	|	disco		|	help cd
+jeu. 30 mai 2019 21:02:18	|	disco		|	cd /1
+jeu. 30 mai 2019 21:03:01	|	disco		|	cd 
+jeu. 30 mai 2019 21:03:05	|	disco		|	cd /1
+jeu. 30 mai 2019 21:04:06	|	disco		|	cd /1
+jeu. 30 mai 2019 21:05:39	|	disco		|	ls ./vms/disco/root/1
+jeu. 30 mai 2019 21:06:34	|	disco		|	cd /1
+jeu. 30 mai 2019 21:07:48	|	disco		|	cd /1
+jeu. 30 mai 2019 21:07:53	|	disco		|	ls 
+jeu. 30 mai 2019 21:08:26	|	disco		|	cd /1
+jeu. 30 mai 2019 21:08:53	|	disco		|	ls 
+jeu. 30 mai 2019 21:09:01	|	disco		|	mkdir test
+jeu. 30 mai 2019 21:09:04	|	disco		|	ls 
+jeu. 30 mai 2019 21:09:43	|	disco		|	cd /1
+jeu. 30 mai 2019 21:09:47	|	disco		|	mkdir test
+jeu. 30 mai 2019 21:10:25	|	disco		|	ls 
+jeu. 30 mai 2019 21:10:40	|	disco		|	mkdir test
+jeu. 30 mai 2019 21:10:51	|	disco		|	ls 
+jeu. 30 mai 2019 21:10:53	|	disco		|	mkdir test
+jeu. 30 mai 2019 21:10:55	|	disco		|	ls 
+jeu. 30 mai 2019 21:10:59	|	disco		|	cd /1
+jeu. 30 mai 2019 21:11:01	|	disco		|	ls 
+jeu. 30 mai 2019 21:11:10	|	disco		|	mkdir please
+jeu. 30 mai 2019 21:11:12	|	disco		|	ls 
+jeu. 30 mai 2019 21:14:52	|	disco		|	ls /a
+jeu. 30 mai 2019 21:15:03	|	disco		|	ls /test
+jeu. 30 mai 2019 21:25:11	|	disco		|	echo "$(buildPath ./1/2/3)"
+jeu. 30 mai 2019 21:32:13	|	disco		|	ls 
+jeu. 30 mai 2019 21:32:28	|	disco		|	ls 
+jeu. 30 mai 2019 21:32:33	|	disco		|	ls a
+jeu. 30 mai 2019 21:32:38	|	disco		|	ls 1
+jeu. 30 mai 2019 21:32:41	|	disco		|	ls /1
+jeu. 30 mai 2019 21:32:44	|	disco		|	ls ./1
+jeu. 30 mai 2019 21:33:01	|	disco		|	touch ./1/a
+jeu. 30 mai 2019 21:33:04	|	disco		|	ls ./1
+jeu. 30 mai 2019 21:33:10	|	disco		|	touch /1/b
+jeu. 30 mai 2019 21:33:16	|	disco		|	ls ./1
+jeu. 30 mai 2019 21:33:22	|	disco		|	touch 1/b
+jeu. 30 mai 2019 21:33:25	|	disco		|	ls ./1
+jeu. 30 mai 2019 21:35:35	|	disco		|	lds 
+jeu. 30 mai 2019 21:35:36	|	disco		|	ls 
+jeu. 30 mai 2019 21:35:39	|	disco		|	cd 1
+jeu. 30 mai 2019 21:36:50	|	disco		|	cd 1
+jeu. 30 mai 2019 21:37:00	|	disco		|	ls 
+jeu. 30 mai 2019 21:37:07	|	disco		|	cd please
+jeu. 30 mai 2019 21:37:10	|	disco		|	ls 
+jeu. 30 mai 2019 21:37:13	|	disco		|	cd ..
+jeu. 30 mai 2019 21:37:21	|	disco		|	ls 
+jeu. 30 mai 2019 21:37:52	|	disco		|	ls -a
+jeu. 30 mai 2019 21:42:20	|	disco		|	cd /1
+jeu. 30 mai 2019 22:17:00	|	disco		|	ls 
+jeu. 30 mai 2019 22:17:20	|	disco		|	ls 
+jeu. 30 mai 2019 22:27:27	|	disco		|	ls 
+jeu. 30 mai 2019 22:27:42	|	disco		|	ls 
+jeu. 30 mai 2019 22:30:17	|	disco		|	ls 
+jeu. 30 mai 2019 22:30:53	|	disco		|	ls 
+jeu. 30 mai 2019 22:31:17	|	disco		|	ls /
+jeu. 30 mai 2019 22:31:31	|	disco		|	ls /1
+jeu. 30 mai 2019 22:33:20	|	disco		|	ls 
+jeu. 30 mai 2019 22:33:26	|	disco		|	ls /1
+jeu. 30 mai 2019 22:34:49	|	disco		|	ls 
+jeu. 30 mai 2019 22:34:52	|	disco		|	ls /1
+jeu. 30 mai 2019 22:34:56	|	disco		|	ls /2
+jeu. 30 mai 2019 22:36:04	|	disco		|	ls 
+jeu. 30 mai 2019 22:36:06	|	disco		|	ls /1
+jeu. 30 mai 2019 22:36:13	|	disco		|	ls f
+jeu. 30 mai 2019 22:36:45	|	disco		|	cd 
+jeu. 30 mai 2019 22:36:48	|	disco		|	cd 1
+jeu. 30 mai 2019 22:36:53	|	disco		|	cd 2
+jeu. 30 mai 2019 22:37:56	|	disco		|	cd /1
+jeu. 30 mai 2019 22:37:58	|	disco		|	cd ./1
+jeu. 30 mai 2019 22:38:01	|	disco		|	cd 1
+jeu. 30 mai 2019 22:38:04	|	disco		|	cd 2
+jeu. 30 mai 2019 22:46:37	|	disco		|	ls 
+jeu. 30 mai 2019 22:47:03	|	disco		|	ls 
+jeu. 30 mai 2019 22:47:08	|	disco		|	ls /
+jeu. 30 mai 2019 22:47:11	|	disco		|	ls ./
+jeu. 30 mai 2019 22:47:13	|	disco		|	ls 1
+jeu. 30 mai 2019 22:47:16	|	disco		|	ls /1
+jeu. 30 mai 2019 22:47:19	|	disco		|	ls ./1
+jeu. 30 mai 2019 22:47:24	|	disco		|	ls 1/please
+jeu. 30 mai 2019 22:47:30	|	disco		|	ls ./1/please
+jeu. 30 mai 2019 22:47:33	|	disco		|	ls 2
+jeu. 30 mai 2019 22:47:51	|	disco		|	ls ./2
+jeu. 30 mai 2019 22:53:29	|	disco		|	ls 
+jeu. 30 mai 2019 22:53:32	|	disco		|	ls 2
+jeu. 30 mai 2019 22:54:39	|	disco		|	ls 2
+jeu. 30 mai 2019 22:55:09	|	disco		|	ls 2
+jeu. 30 mai 2019 22:55:32	|	disco		|	ls 2
+jeu. 30 mai 2019 22:56:16	|	disco		|	ls 2
+jeu. 30 mai 2019 22:56:31	|	disco		|	ls 2
+jeu. 30 mai 2019 22:57:21	|	disco		|	ls 2
+jeu. 30 mai 2019 22:57:44	|	disco		|	ls 2
+jeu. 30 mai 2019 22:59:28	|	disco		|	ls 2
+jeu. 30 mai 2019 22:59:42	|	disco		|	ls /1/please
+jeu. 30 mai 2019 22:59:46	|	disco		|	ls ./1
+jeu. 30 mai 2019 22:59:51	|	disco		|	cd 1
+jeu. 30 mai 2019 22:59:53	|	disco		|	ls 
+jeu. 30 mai 2019 22:59:57	|	disco		|	cd /please
+jeu. 30 mai 2019 23:00:00	|	disco		|	ls 
+jeu. 30 mai 2019 23:00:04	|	disco		|	cd ./please
+jeu. 30 mai 2019 23:00:08	|	disco		|	ls 
+jeu. 30 mai 2019 23:00:12	|	disco		|	cd ..
+jeu. 30 mai 2019 23:00:14	|	disco		|	ls 
+jeu. 30 mai 2019 23:00:32	|	disco		|	cd please
+jeu. 30 mai 2019 23:00:34	|	disco		|	ls 
+jeu. 30 mai 2019 23:00:38	|	disco		|	cd ../..
+jeu. 30 mai 2019 23:00:41	|	disco		|	ls 
+jeu. 30 mai 2019 23:01:15	|	disco		|	ls 
+jeu. 30 mai 2019 23:01:18	|	disco		|	cd /1
+jeu. 30 mai 2019 23:01:20	|	disco		|	ls 
+jeu. 30 mai 2019 23:01:24	|	disco		|	cd please
+jeu. 30 mai 2019 23:01:29	|	disco		|	cd ok
+jeu. 30 mai 2019 23:01:35	|	disco		|	ls 
+jeu. 30 mai 2019 23:01:37	|	disco		|	cd ..
+jeu. 30 mai 2019 23:01:41	|	disco		|	cd ./please
+jeu. 30 mai 2019 23:01:43	|	disco		|	cd ..
+jeu. 30 mai 2019 23:01:46	|	disco		|	cd /please
+jeu. 30 mai 2019 23:01:51	|	disco		|	cd ..
+jeu. 30 mai 2019 23:01:55	|	disco		|	cd ..
+jeu. 30 mai 2019 23:02:17	|	disco		|	cd ../..
+jeu. 30 mai 2019 23:06:55	|	disco		|	cd /1/please
+jeu. 30 mai 2019 23:07:02	|	disco		|	ls 
+jeu. 30 mai 2019 23:07:05	|	disco		|	cd /1
+jeu. 30 mai 2019 23:07:19	|	disco		|	cd /1
+jeu. 30 mai 2019 23:07:21	|	disco		|	ls 
+jeu. 30 mai 2019 23:08:17	|	disco		|	cd /1
+jeu. 30 mai 2019 23:08:20	|	disco		|	ls 
+jeu. 30 mai 2019 23:11:19	|	disco		|	cd /1
+jeu. 30 mai 2019 23:11:23	|	disco		|	cd ..
+jeu. 30 mai 2019 23:11:26	|	disco		|	cd /1/please
+jeu. 30 mai 2019 23:11:29	|	disco		|	cd ../..
+jeu. 30 mai 2019 23:11:31	|	disco		|	cd /1/please
+jeu. 30 mai 2019 23:11:36	|	disco		|	cd ../../..
+jeu. 30 mai 2019 23:11:37	|	disco		|	ls 
+jeu. 30 mai 2019 23:11:46	|	disco		|	ls /1/please
+jeu. 30 mai 2019 23:11:57	|	disco		|	touch /1/please YES.txt
+jeu. 30 mai 2019 23:12:10	|	disco		|	ls 1/please
+jeu. 30 mai 2019 23:12:20	|	disco		|	ls 
+jeu. 30 mai 2019 23:12:36	|	disco		|	cd /1
+jeu. 30 mai 2019 23:12:38	|	disco		|	ls 
+jeu. 30 mai 2019 23:12:54	|	disco		|	cd ..
+jeu. 30 mai 2019 23:13:19	|	disco		|	touch /ok
+jeu. 30 mai 2019 23:13:21	|	disco		|	ls 
+jeu. 30 mai 2019 23:13:44	|	disco		|	touch ./1/please/YES.txt
+jeu. 30 mai 2019 23:13:49	|	disco		|	ls /1/please
+jeu. 30 mai 2019 23:13:55	|	disco		|	cd /1/please
+jeu. 30 mai 2019 23:13:56	|	disco		|	ls 
+jeu. 30 mai 2019 23:14:11	|	disco		|	cd ../../test
+jeu. 30 mai 2019 23:14:13	|	disco		|	ls 
+jeu. 30 mai 2019 23:14:26	|	disco		|	cd ..
+jeu. 30 mai 2019 23:14:28	|	disco		|	ls 
+jeu. 30 mai 2019 23:14:47	|	disco		|	ls -a
+jeu. 30 mai 2019 23:14:53	|	disco		|	help ls
+jeu. 30 mai 2019 23:15:00	|	disco		|	help 

@@ -17,8 +17,8 @@ case $1 in
         helpMode
         ;;
     -t )
-        sessionStart "admin" "tom"
-        # sessionStart "connect" "toto" "flash"
+        # sessionStart "admin" "tom"
+        sessionStart "connect" "toto" "disco"
         ;;
     * )
         error_msg="Invalid argument : the \"$1\" flag doesn't exists"

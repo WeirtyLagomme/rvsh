@@ -11,7 +11,7 @@ function buildPrompt () {
     local host
     [[ $SESSION_MODE == "connect" ]] && host="$SESSION_VM"
     [[ $SESSION_MODE == "admin" ]] && host="rvsh"
-    echo -e "\n${CY}$SESSION_USER${NC}@${GR}$host${NC}> "
+    echo -e "\n${CY}$SESSION_USER${NC}@${GR}$host${NC} ${OR}$SESSION_DIR${NC} > "
 }
 
 function promptCommand () {

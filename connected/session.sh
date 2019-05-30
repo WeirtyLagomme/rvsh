@@ -5,6 +5,7 @@ SESSION_ID=""
 SESSION_MODE=""
 SESSION_USER=""
 SESSION_VM=""
+SESSION_DIR=""
 SESSION_START=""
 
 # Start session
@@ -17,6 +18,7 @@ function sessionStart () {
     SESSION_MODE="$1"
     SESSION_USER="$2"
     SESSION_VM="$3"
+    SESSION_DIR="/"
     SESSION_START=$(date)
     # Save user's session in VM
     if [[ $SESSION_MODE == "connect" ]]; then
