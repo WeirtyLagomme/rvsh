@@ -16,5 +16,5 @@ function helpTouch () {
     echo "Create a file to the specified path.
 
     #> connect
-    > touch file_path"
+    > touch path"
 }

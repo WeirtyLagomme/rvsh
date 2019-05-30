@@ -277,3 +277,50 @@ jeu. 30 mai 2019 23:14:28	|	disco		|	ls
 jeu. 30 mai 2019 23:14:47	|	disco		|	ls -a
 jeu. 30 mai 2019 23:14:53	|	disco		|	help ls
 jeu. 30 mai 2019 23:15:00	|	disco		|	help 
+ven. 31 mai 2019 01:09:51	|	disco		|	ls 
+ven. 31 mai 2019 01:10:00	|	disco		|	rm 
+ven. 31 mai 2019 01:10:03	|	disco		|	rm /
+ven. 31 mai 2019 01:10:10	|	disco		|	rm ..
+ven. 31 mai 2019 01:10:15	|	disco		|	rm ../../
+ven. 31 mai 2019 01:10:43	|	disco		|	ls 
+ven. 31 mai 2019 01:10:46	|	disco		|	rm /1
+ven. 31 mai 2019 01:10:51	|	disco		|	rm hola
+ven. 31 mai 2019 01:10:54	|	disco		|	ls 
+ven. 31 mai 2019 01:11:04	|	disco		|	rm /1/../../../
+ven. 31 mai 2019 01:12:00	|	disco		|	rm /.
+ven. 31 mai 2019 01:12:08	|	disco		|	/* 
+ven. 31 mai 2019 01:12:17	|	disco		|	rm /*
+ven. 31 mai 2019 01:12:31	|	disco		|	ls /*
+ven. 31 mai 2019 01:13:20	|	disco		|	rm /*
+ven. 31 mai 2019 01:13:28	|	disco		|	ls /*
+ven. 31 mai 2019 01:13:31	|	disco		|	cd /*
+ven. 31 mai 2019 01:13:46	|	disco		|	rm ./.
+ven. 31 mai 2019 01:13:50	|	disco		|	./ 
+ven. 31 mai 2019 01:13:55	|	disco		|	ls /*
+ven. 31 mai 2019 01:14:54	|	disco		|	rm /
+ven. 31 mai 2019 01:15:06	|	disco		|	rm /
+ven. 31 mai 2019 01:15:10	|	disco		|	rm ./.
+ven. 31 mai 2019 01:15:13	|	disco		|	rm /*
+ven. 31 mai 2019 01:15:24	|	disco		|	rm 
+ven. 31 mai 2019 01:15:26	|	disco		|	rm .
+ven. 31 mai 2019 01:15:32	|	disco		|	rm *
+ven. 31 mai 2019 01:15:49	|	disco		|	rm ./1/*
+ven. 31 mai 2019 01:16:18	|	disco		|	ls /1/*
+ven. 31 mai 2019 01:18:54	|	disco		|	ls 
+ven. 31 mai 2019 01:18:59	|	disco		|	ls /1
+ven. 31 mai 2019 01:19:04	|	disco		|	ls /1/please
+ven. 31 mai 2019 01:19:09	|	disco		|	ls /test
+ven. 31 mai 2019 01:19:19	|	disco		|	touch /test/tmp
+ven. 31 mai 2019 01:19:23	|	disco		|	cd /test
+ven. 31 mai 2019 01:19:25	|	disco		|	ls 
+ven. 31 mai 2019 01:19:33	|	disco		|	touch tot
+ven. 31 mai 2019 01:19:34	|	disco		|	ls 
+ven. 31 mai 2019 01:19:39	|	disco		|	rm toto
+ven. 31 mai 2019 01:19:51	|	disco		|	rm tot
+ven. 31 mai 2019 01:20:02	|	disco		|	ls 
+ven. 31 mai 2019 01:21:33	|	disco		|	cd test
+ven. 31 mai 2019 01:21:35	|	disco		|	ls 
+ven. 31 mai 2019 01:21:37	|	disco		|	rm tot
+ven. 31 mai 2019 01:21:40	|	disco		|	ls 
+ven. 31 mai 2019 01:22:51	|	disco		|	touch /test/hum
+ven. 31 mai 2019 01:22:59	|	disco		|	rm /test/hum
