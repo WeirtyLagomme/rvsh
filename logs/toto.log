@@ -385,3 +385,13 @@ ven. 31 mai 2019 12:51:47	|	disco		|	cat hola
 ven. 31 mai 2019 12:53:46	|	disco		|	cat hola
 ven. 31 mai 2019 12:55:05	|	disco		|	cat hola
 ven. 31 mai 2019 12:55:46	|	disco		|	cat hola
+ven. 31 mai 2019 13:09:46	|	disco		|	ls 
+ven. 31 mai 2019 13:10:13	|	disco		|	rm 1
+ven. 31 mai 2019 13:10:15	|	disco		|	ls 
+ven. 31 mai 2019 13:12:37	|	disco		|	ls 
+ven. 31 mai 2019 13:12:43	|	disco		|	cd home
+ven. 31 mai 2019 13:12:45	|	disco		|	ls 
+ven. 31 mai 2019 13:12:49	|	disco		|	cd ..
+ven. 31 mai 2019 13:12:56	|	disco		|	cd home/test
+ven. 31 mai 2019 13:12:59	|	disco		|	cd /
+ven. 31 mai 2019 13:13:01	|	disco		|	ls 

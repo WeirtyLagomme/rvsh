@@ -31,7 +31,7 @@ function addUsers () {
         for vm_name in "${auth_vm_names[@]}"; do
             fileStream "append" "./vms/$vm_name/auths" "$username"
             echo "$vm_name" >> "./usrs/$username/auths"
-            mkdir -p "./vms/$vm_name/root/$username"
+            mkdir -p "./vms/$vm_name/root/$username/{home,share,dev,tmp}"
         done
     fi
     dispNotif "0" "The user ${OR}$username${NC} has been successfuly created"
