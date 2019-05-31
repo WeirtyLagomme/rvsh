@@ -31,6 +31,7 @@ function addUsers () {
         for vm_name in "${auth_vm_names[@]}"; do
             fileStream "append" "./vms/$vm_name/auths" "$username"
             echo "$vm_name" >> "./usrs/$username/auths"
+            mkdir -p "./vms/$vm_name/root/$username"
         done
     fi
     dispNotif "0" "The user ${OR}$username${NC} has been successfuly created"
@@ -39,9 +40,10 @@ function addUsers () {
 # $1 : username
 function removeUsers () {
     local username="$1"
-    # Remove from vms auth
+    # Remove from vms auth and remove ~/
     while read vm_name; do
         fileStream "remove" "./vms/$vm_name/auths" "$username"
+        rm -rf "./vms/$vm_name/root/$username"
     done < "./usrs/$username/auths"
     # Delete user file
     rm -rf "./usrs/$username"
@@ -72,22 +74,22 @@ function updateUsers () {
             for auth_vm_name in "${auth_vm_names[@]}"; do
                 entityExists "true" "vm" "$auth_vm_name" "3" || return 1
             done
-            # Push or Pop
-            local action="push"
-            [[ $property == *"-="* ]] && action="pop"
+            # Append or remove
+            local action="append"
+            [[ $property == *"-="* ]] && action="remove"
             # Update vms auths
             for auth_vm_name in "${auth_vm_names[@]}"; do
                 local currently_auth_vms=$(grep '/^'"$auth_vm_name"'$/' "./usrs/$username/auths")
-                # Don't push twice or pop if it isn't necessary
-                [[ $action == "push" ]] && [[ -z $currently_auth_vms ]] && continue
-                [[ $action == "pop" ]] && [[ ! -z $currently_auth_vms ]] && continue
+                # Don't append twice or remove if it isn't necessary
+                [[ $action == "append" ]] && [[ -z $currently_auth_vms ]] && continue
+                [[ $action == "remove" ]] && [[ ! -z $currently_auth_vms ]] && continue
                 # Do the job
-                echo "$username" >> "./vms/$auth_vm_name/auths"
-                echo "$auth_vm_name" >> "./usrs/$username/auths"
+                fileStream "$action" "./vms/$auth_vm_name/auths" "$username"
+                fileStream "$action" "./usrs/$username/auths" "$auth_vm_name"
             done
             # Notif
             local vm_update_notif="now"
-            [[ $action == "pop" ]] && vm_update_notif="no longer"
+            [[ $action == "remove" ]] && vm_update_notif="no longer"
             dispNotif "1" "The user ${OR}$username${NC} is $vm_update_notif authorized to connect to the following virtual machine(s) : ${vm_names//,/, }"
         fi
         # Manage password

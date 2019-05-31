@@ -17,7 +17,7 @@ case $1 in
         helpMode
         ;;
     -t )
-        # sessionStart "admin" "tom"
+        #sessionStart "admin" "tom"
         sessionStart "connect" "toto" "disco"
         ;;
     * )

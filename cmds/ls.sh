@@ -8,6 +8,8 @@ function ls () {
     local path=$(buildPath "$lookup" "true")
     # Error handler
     [[ $(cut -d ' ' -f1 <<< "$path") == "dispError" ]] && eval $path && return 1
+    # Should be a file
+    [[ -f "$path" ]] && dispError "2" "Incorrect path to list" && return 1
     # Format result
     local list=$(command ls "$path")
     # Empty directory

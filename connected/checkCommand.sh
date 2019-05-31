@@ -122,7 +122,7 @@ function checkUseConditions () {
         local conditions=($infos_cond)
         for cond in "${conditions[@]}"; do
             if [[ $SESSION_MODE != "$cond" ]]; then
-                dispError "4" "You must be in \"$cond\" mode in order to use this command"
+                dispError "4" "You must be in ${OR}$cond${NC} mode in order to use this command"
                 return 1
             fi
         done

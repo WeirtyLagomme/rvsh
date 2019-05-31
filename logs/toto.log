@@ -324,3 +324,64 @@ ven. 31 mai 2019 01:21:37	|	disco		|	rm tot
 ven. 31 mai 2019 01:21:40	|	disco		|	ls 
 ven. 31 mai 2019 01:22:51	|	disco		|	touch /test/hum
 ven. 31 mai 2019 01:22:59	|	disco		|	rm /test/hum
+ven. 31 mai 2019 01:23:44	|	disco		|	help rm
+ven. 31 mai 2019 12:16:22	|	disco		|	ls 
+ven. 31 mai 2019 12:22:56	|	disco		|	ls 
+ven. 31 mai 2019 12:23:45	|	disco		|	ls 
+ven. 31 mai 2019 12:23:50	|	disco		|	cd /
+ven. 31 mai 2019 12:23:52	|	disco		|	ls 
+ven. 31 mai 2019 12:24:30	|	disco		|	help 
+ven. 31 mai 2019 12:24:40	|	disco		|	clear 
+ven. 31 mai 2019 12:24:44	|	disco		|	ls 
+ven. 31 mai 2019 12:24:47	|	disco		|	$cd /1
+ven. 31 mai 2019 12:24:52	|	disco		|	cd /1
+ven. 31 mai 2019 12:24:53	|	disco		|	ls 
+ven. 31 mai 2019 12:24:58	|	disco		|	ls /please
+ven. 31 mai 2019 12:25:02	|	disco		|	ls ./please
+ven. 31 mai 2019 12:37:33	|	disco		|	ls 
+ven. 31 mai 2019 12:37:36	|	disco		|	nano 
+ven. 31 mai 2019 12:37:39	|	disco		|	nano zkejfh
+ven. 31 mai 2019 12:37:52	|	disco		|	nano /1
+ven. 31 mai 2019 12:38:05	|	disco		|	nano ./1
+ven. 31 mai 2019 12:38:15	|	disco		|	nano 1
+ven. 31 mai 2019 12:38:20	|	disco		|	nano test
+ven. 31 mai 2019 12:38:24	|	disco		|	nano hola
+ven. 31 mai 2019 12:38:37	|	disco		|	ls /1
+ven. 31 mai 2019 12:38:42	|	disco		|	nano /1/a
+ven. 31 mai 2019 12:39:41	|	disco		|	help nano
+ven. 31 mai 2019 12:40:21	|	disco		|	help nano
+ven. 31 mai 2019 12:40:45	|	disco		|	help nano
+ven. 31 mai 2019 12:41:43	|	disco		|	help nano
+ven. 31 mai 2019 12:42:55	|	disco		|	help nano
+ven. 31 mai 2019 12:43:05	|	disco		|	help nano
+ven. 31 mai 2019 12:43:13	|	disco		|	help 
+ven. 31 mai 2019 12:43:45	|	disco		|	help 
+ven. 31 mai 2019 12:44:02	|	disco		|	help 
+ven. 31 mai 2019 12:44:43	|	disco		|	clear 
+ven. 31 mai 2019 12:44:48	|	disco		|	ls 
+ven. 31 mai 2019 12:44:51	|	disco		|	cd /1
+ven. 31 mai 2019 12:45:52	|	disco		|	ls 
+ven. 31 mai 2019 12:45:55	|	disco		|	$cd ..
+ven. 31 mai 2019 12:45:58	|	disco		|	cd ..
+ven. 31 mai 2019 12:46:00	|	disco		|	ls 
+ven. 31 mai 2019 12:46:05	|	disco		|	cd ./hol
+ven. 31 mai 2019 12:46:06	|	disco		|	cd ./hol
+ven. 31 mai 2019 12:46:09	|	disco		|	cd ./hola
+ven. 31 mai 2019 12:46:11	|	disco		|	ls 
+ven. 31 mai 2019 12:46:45	|	disco		|	ls 
+ven. 31 mai 2019 12:46:47	|	disco		|	ls hola
+ven. 31 mai 2019 12:48:21	|	disco		|	ls ./hola
+ven. 31 mai 2019 12:48:23	|	disco		|	ls 
+ven. 31 mai 2019 12:48:43	|	disco		|	ls 
+ven. 31 mai 2019 12:48:46	|	disco		|	ls /1
+ven. 31 mai 2019 12:48:50	|	disco		|	ls ./hola
+ven. 31 mai 2019 12:50:48	|	disco		|	cat ./
+ven. 31 mai 2019 12:51:01	|	disco		|	cat ./1
+ven. 31 mai 2019 12:51:05	|	disco		|	cat ./hola
+ven. 31 mai 2019 12:51:13	|	disco		|	nano ./1
+ven. 31 mai 2019 12:51:15	|	disco		|	nano .
+ven. 31 mai 2019 12:51:20	|	disco		|	nano ./hola
+ven. 31 mai 2019 12:51:47	|	disco		|	cat hola
+ven. 31 mai 2019 12:53:46	|	disco		|	cat hola
+ven. 31 mai 2019 12:55:05	|	disco		|	cat hola
+ven. 31 mai 2019 12:55:46	|	disco		|	cat hola

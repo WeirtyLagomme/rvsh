@@ -7,7 +7,8 @@ function buildPath () {
     local lookup="$1"
     local exists="$2"
     # Root path
-    local root="./vms/$SESSION_VM/root"
+    local root="./vms/$SESSION_VM/root/$SESSION_USER"
+    # Build path
     local path="$root"
     # Absolute path
     if [[ $lookup =~ ^"/" ]]; then path+="$lookup"

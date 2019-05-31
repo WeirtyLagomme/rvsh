@@ -34,3 +34,26 @@ mer. 29 mai 2019 22:34:51	|	admin		|	su -connect disco toto
 mer. 29 mai 2019 22:35:32	|	admin		|	su -connect disco toto
 mer. 29 mai 2019 22:36:57	|	admin		|	su -connect disco toto
 mer. 29 mai 2019 22:38:58	|	admin		|	su -connect disco toto
+ven. 31 mai 2019 12:16:40	|	admin		|	ls 
+ven. 31 mai 2019 12:17:01	|	admin		|	ls 
+ven. 31 mai 2019 12:17:10	|	admin		|	ls /disco
+ven. 31 mai 2019 12:17:41	|	admin		|	ls 
+ven. 31 mai 2019 12:17:46	|	admin		|	cd diSCO
+ven. 31 mai 2019 12:17:51	|	admin		|	ls 
+ven. 31 mai 2019 12:19:22	|	admin		|	ls /disco
+ven. 31 mai 2019 12:20:26	|	admin		|	cd /disco
+ven. 31 mai 2019 12:20:32	|	admin		|	ls 
+ven. 31 mai 2019 12:22:22	|	admin		|	ls 
+ven. 31 mai 2019 12:25:33	|	disco		|	ls 
+ven. 31 mai 2019 12:25:42	|	disco		|	touch 1
+ven. 31 mai 2019 12:25:45	|	disco		|	mkdir 2
+ven. 31 mai 2019 12:25:52	|	disco		|	touch ./2/3
+ven. 31 mai 2019 12:25:55	|	disco		|	ls 
+ven. 31 mai 2019 12:25:58	|	disco		|	ls /2
+ven. 31 mai 2019 12:26:58	|	disco		|	ls 
+ven. 31 mai 2019 12:27:04	|	disco		|	touch ./2/4
+ven. 31 mai 2019 12:27:07	|	disco		|	ls /2
+ven. 31 mai 2019 12:27:10	|	disco		|	ls 
+ven. 31 mai 2019 12:27:13	|	disco		|	cd 2
+ven. 31 mai 2019 12:27:15	|	disco		|	ls 
+ven. 31 mai 2019 12:27:18	|	disco		|	cd ..
