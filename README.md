@@ -34,13 +34,13 @@ help [command]
 The system will always record user's activity and keep logs in the following directory :
 
 ```shell
-./logs/<username>.log
+./usrs/<username>/logs
 ```
 
 A new line of log will be added every time a user runs a command :
 
 ```shell
-<date> <command>
+<date> | mode | <command>
 ```
 
 ## Additional features
