@@ -23,7 +23,7 @@ function promptCommand () {
         # Save input to log
         local log_mode="$SESSION_VM"
         [[ -z $log_mode ]] && log_mode="admin"
-        echo -e "$(date) | $log_mode | $cmd $args" >> "./usrs/$SESSION_USER/logs"
+        echo -e "$(date '+%d-%m-%Y %H:%M:%S') | $log_mode | $cmd $args" >> "./usrs/$SESSION_USER/logs"
         # Builtins cmds
         [[ ! -z "$(grep '^'"$cmd"'$' "./config/builtins.conf")" ]] && $cmd $args && continue
         # Check & execute command

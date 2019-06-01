@@ -125,7 +125,7 @@ function helpUsers () {
     echo "Allows you to add, remove or manage user's password and virtual machine's access.
     
     #> admin
-    > users -add username{file:!usr,format:norm,min:3} password{format:norm,min:3} admin [vm_name_1,vm_name_2...]
+    > users -add username{file:!usr,format:norm,min:3} password{format:norm,min:3} admin [vm_name_1 vm_name_2...]
     > users -remove username{file:usr}
     > users -update username{file:usr} [password=new_password] [admin=(0|1)] [vms(+|-)=vm_name_1,vm_name_2...]"
 }
