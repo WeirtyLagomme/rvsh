@@ -395,3 +395,30 @@ ven. 31 mai 2019 13:12:49	|	disco		|	cd ..
 ven. 31 mai 2019 13:12:56	|	disco		|	cd home/test
 ven. 31 mai 2019 13:12:59	|	disco		|	cd /
 ven. 31 mai 2019 13:13:01	|	disco		|	ls 
+sam.  1 juin 2019 18:17:28	|	disco		|	ls 
+sam.  1 juin 2019 18:17:32	|	disco		|	cd hola/
+sam.  1 juin 2019 18:17:34	|	disco		|	cd home
+sam.  1 juin 2019 18:17:36	|	disco		|	ls 
+sam.  1 juin 2019 18:17:41	|	disco		|	share 
+sam.  1 juin 2019 18:17:45	|	disco		|	share zjg
+sam.  1 juin 2019 18:17:48	|	disco		|	share zjg zf
+sam.  1 juin 2019 18:17:49	|	disco		|	share zjg zf zef
+sam.  1 juin 2019 18:18:13	|	disco		|	share tom flash zeg
+sam.  1 juin 2019 18:18:29	|	disco		|	share tom flash hola
+sam.  1 juin 2019 18:20:46	|	disco		|	share tom flash gola
+sam.  1 juin 2019 18:20:50	|	disco		|	share tom flash hola
+sam.  1 juin 2019 18:20:55	|	disco		|	cd home
+sam.  1 juin 2019 18:20:57	|	disco		|	share tom flash hola
+sam.  1 juin 2019 18:27:31	|	disco		|	share tom flash hola
+sam.  1 juin 2019 18:27:36	|	disco		|	cd home
+sam.  1 juin 2019 18:27:38	|	disco		|	share tom flash hola
+sam.  1 juin 2019 18:28:17	|	disco		|	cd home
+sam.  1 juin 2019 18:28:24	|	disco		|	share tom flash hola
+sam.  1 juin 2019 18:29:51	|	disco		|	cd homer
+sam.  1 juin 2019 18:29:52	|	disco		|	cd home
+sam.  1 juin 2019 18:29:58	|	disco		|	share tom flash hola
+sam.  1 juin 2019 18:30:25	|	disco		|	cd home
+sam.  1 juin 2019 18:30:30	|	disco		|	share tom flash hola
+sam.  1 juin 2019 18:31:04	|	disco		|	cd home
+sam.  1 juin 2019 18:31:11	|	disco		|	share tom flash hola
+sam.  1 juin 2019 18:31:28	|	disco		|	share tom flash /home

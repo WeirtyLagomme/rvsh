@@ -23,7 +23,7 @@ function addUsers () {
         fi
     fi
     # Create user directory
-    mkdir "./usrs/alak" && cp -R "./config/defaults/usr/." $_
+    mkdir "./usrs/$username" && cp -R "./config/defaults/usr/." "$_"
     # Fill user file
     setVar "password" "./usrs/$username/profile" "push" "$(hash "$password")"
     setVar "admin" "./usrs/$username/profile" "push" "$admin"
