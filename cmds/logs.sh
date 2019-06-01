@@ -4,7 +4,7 @@
 function logs () {
     local username="$1"
     echo -e "\n [${CY}Logs of $username${NC}]\n"
-    echo -e "$(sed -e $'s/^/ /g' < "./logs/tom.log")"
+    echo -e "$(sed -e $'s/^/ /g' < "./usrs/$username/logs")"
 }
 
 function helpLogs () {
