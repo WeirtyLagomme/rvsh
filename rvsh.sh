@@ -17,9 +17,8 @@ case $1 in
         helpMode
         ;;
     -t )
-        echo "TODO : logs() should be able to grep for certain things (ie. dates, cmds, modes)"
-        sessionStart "admin" "tom"
-        #sessionStart "connect" "toto" "disco"
+        #sessionStart "admin" "tom"
+        sessionStart "connect" "toto" "disco"
         ;;
     * )
         error_msg="Invalid argument : the \"$1\" flag doesn't exists"

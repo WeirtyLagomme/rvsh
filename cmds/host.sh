@@ -4,7 +4,7 @@
 function addHost () {
     local vm_name="$1"
     # Create vm directory
-    mkdir "./vms/$vm_name" && cp -R "./config/defaults/vm/." $_
+    command mkdir "./vms/$vm_name" && command cp -R "./config/defaults/vm/." $_
     dispNotif "0" "The ${OR}$vm_name${NC} virtual machine has been successfuly created"
 }
 
@@ -16,7 +16,7 @@ function removeHost () {
         sed -i '/^'"$vm_name"'$/d' "./usrs/$username/auths"
     done < "./vms/$vm_name/auths"
     # Delete VM file
-    rm -rf "./vms/$vm_name"
+    command rm -rf "./vms/$vm_name"
     dispNotif "0" "The ${OR}$vm_name${NC} virtual machine has been successfuly deleted"
 }
 

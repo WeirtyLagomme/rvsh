@@ -16,7 +16,7 @@ function fileStream () {
     fi
     # Select stream type
     case $stream in
-        append ) echo "$content" >> "$file" ;;
+        append ) printf "%s\n" "$content" >> "$file" ;;
         replace ) sed -i 's/^'"$content"'$/'"$new_content"'/' "$file" ;;
         remove ) sed -i '/^'"$content"'$/d' "$file" ;;
         * ) dispError "42" "Incorrect ${OR}stream type${NC} received in fileStream()" ;;

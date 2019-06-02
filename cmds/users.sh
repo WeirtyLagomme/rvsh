@@ -23,7 +23,7 @@ function addUsers () {
         fi
     fi
     # Create user directory
-    mkdir "./usrs/$username" && cp -R "./config/defaults/usr/." "$_"
+    command mkdir "./usrs/$username" && command cp -R "./config/defaults/usr/." "$_"
     # Fill user file
     setVar "password" "./usrs/$username/profile" "push" "$(hash "$password")"
     setVar "admin" "./usrs/$username/profile" "push" "$admin"
@@ -31,7 +31,7 @@ function addUsers () {
         for vm_name in "${auth_vm_names[@]}"; do
             fileStream "append" "./vms/$vm_name/auths" "$username"
             echo "$vm_name" >> "./usrs/$username/auths"
-            mkdir -p "./vms/$vm_name/root/$username/{home,share,dev,tmp}"
+            command mkdir -p "./vms/$vm_name/root/$username/{home,share,dev,tmp}"
         done
     fi
     dispNotif "0" "The user ${OR}$username${NC} has been successfuly created"
@@ -43,10 +43,10 @@ function removeUsers () {
     # Remove from vms auth and remove ~/
     while read vm_name; do
         fileStream "remove" "./vms/$vm_name/auths" "$username"
-        rm -rf "./vms/$vm_name/root/$username"
+        command rm -rf "./vms/$vm_name/root/$username"
     done < "./usrs/$username/auths"
     # Delete user file
-    rm -rf "./usrs/$username"
+    command rm -rf "./usrs/$username"
     dispNotif "1" "The user ${OR}$username${NC} has been successfuly deleted"
     # If current user, logout
     checkAccount

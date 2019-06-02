@@ -20,7 +20,7 @@ function displayUnreadMessages () {
         echo -ne "\n\n [${BL}$sender${NC}] ${DI}$date${NC}\n\n $message"
     done < "$unread"
     # Transfer messages from unread to read and clear unread
-    cat "$unread" >> "./usrs/$SESSION_USER/msgs/read" && > "$unread"
+    command cat "$unread" >> "./usrs/$SESSION_USER/msgs/read" && > "$unread"
     # Reset prompt
     echo -ne "\n$(buildPrompt)"
 }

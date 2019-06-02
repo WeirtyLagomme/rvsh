@@ -14,3 +14,40 @@
 01-06-2019 21:35:41 | admin | logs toto
 01-06-2019 21:36:20 | admin | logs toto
 01-06-2019 21:36:33 | admin | logs toto
+01-06-2019 23:27:24 | admin | help whoami
+01-06-2019 23:27:27 | admin | whoami 
+01-06-2019 23:28:14 | admin | whoami 
+01-06-2019 23:28:27 | admin | whoami 
+01-06-2019 23:28:55 | admin | whoami 
+02-06-2019 11:57:23 | admin | help 
+02-06-2019 11:58:58 | admin | help 
+02-06-2019 11:59:14 | admin | help 
+02-06-2019 12:15:05 | admin | help 
+02-06-2019 12:18:58 | admin | help 
+02-06-2019 12:19:39 | admin | help 
+02-06-2019 12:20:34 | admin | help 
+02-06-2019 12:20:53 | admin | help 
+02-06-2019 12:21:16 | admin | help 
+02-06-2019 12:23:47 | admin | help 
+02-06-2019 12:23:56 | admin | help 
+02-06-2019 12:24:40 | admin | help 
+02-06-2019 12:25:13 | admin | help 
+02-06-2019 12:25:47 | admin | help 
+02-06-2019 12:30:16 | admin | help path
+02-06-2019 12:54:26 | admin | help path
+02-06-2019 12:54:28 | admin | path 
+02-06-2019 13:24:44 | admin | ls 
+02-06-2019 13:24:50 | admin | help host
+02-06-2019 13:25:32 | admin | host -add kern
+02-06-2019 13:26:43 | admin | host -add kern
+02-06-2019 13:30:00 | admin | host -link disco kern
+02-06-2019 13:31:16 | admin | link disco kern
+02-06-2019 13:31:23 | admin | host -link disco kern
+02-06-2019 13:32:46 | admin | host -link disco kern
+02-06-2019 13:36:01 | admin | host -link kern disco
+02-06-2019 13:37:18 | admin | host -link disco kern
+02-06-2019 13:38:35 | admin | help path
+02-06-2019 13:38:41 | admin | path flash kern
+02-06-2019 14:21:16 | admin | host -link disco kern
+02-06-2019 14:21:27 | admin | su -connect
+02-06-2019 14:21:40 | admin | su -connect disco toto

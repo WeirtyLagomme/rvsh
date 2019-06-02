@@ -1,7 +1,7 @@
 #!/bin/bash
 
 function rhost () {
-    local connected_vms=$(cat "./vms/$SESSION_VM/links")
+    local connected_vms=$(command cat "./vms/$SESSION_VM/links")
     local header="\n Linked virtual machines"
     echo -e "$header"
     local line=" "

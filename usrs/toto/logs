@@ -16,4 +16,58 @@
 14
 15
 16
-18
+1802-06-2019 12:54:52 | disco | path 1 2
+02-06-2019 12:55:14 | disco | path 1 2
+02-06-2019 12:56:42 | disco | path 
+02-06-2019 13:24:38 | disco | su -admin
+02-06-2019 13:26:34 | disco | su -admin
+02-06-2019 13:31:02 | disco | su -admin
+02-06-2019 13:32:37 | disco | su -admin
+02-06-2019 13:38:54 | disco | path flash kern
+02-06-2019 13:39:30 | disco | path kern flash
+02-06-2019 13:40:19 | disco | path flash kern
+02-06-2019 13:40:52 | disco | path flash disco
+02-06-2019 13:41:50 | disco | path flash kern
+02-06-2019 13:42:29 | disco | path flash kern
+02-06-2019 13:44:58 | disco | path flash kern
+02-06-2019 13:45:36 | disco | path flash kern
+02-06-2019 13:46:07 | disco | path flash kern
+02-06-2019 13:47:57 | disco | path flash kern
+02-06-2019 13:48:10 | disco | path flash kern
+02-06-2019 13:48:51 | disco | path flash kern
+02-06-2019 13:53:10 | disco | path flash kern
+02-06-2019 13:54:02 | disco | path flash kern
+02-06-2019 13:56:04 | disco | path flash kern
+02-06-2019 13:57:23 | disco | path flash kern
+02-06-2019 13:59:03 | disco | path flash kern
+02-06-2019 13:59:44 | disco | path flash kern
+02-06-2019 14:00:12 | disco | path flash kern
+02-06-2019 14:02:19 | disco | path flash kern
+02-06-2019 14:17:17 | disco | path flash kern
+02-06-2019 14:19:15 | disco | path flash kern
+02-06-2019 14:21:02 | disco | host -link disco kern
+02-06-2019 14:21:10 | disco | su -admin
+02-06-2019 14:21:54 | disco | path disco kern
+02-06-2019 14:22:05 | disco | path flash kern
+02-06-2019 14:26:01 | disco | path flash kern
+02-06-2019 14:26:41 | disco | path flash kern
+02-06-2019 14:27:49 | disco | path flash disco
+02-06-2019 14:27:58 | disco | path flash kern
+02-06-2019 14:31:53 | disco | path flash kern
+02-06-2019 14:32:39 | disco | path flash kern
+02-06-2019 14:35:02 | disco | path flash kern
+02-06-2019 14:35:29 | disco | path flash kern
+02-06-2019 14:37:25 | disco | path flash kern
+02-06-2019 14:39:04 | disco | path flash kern
+02-06-2019 14:39:53 | disco | path flash kern
+02-06-2019 14:39:59 | disco | path flash disco
+02-06-2019 14:40:21 | disco | help path
+02-06-2019 14:40:52 | disco | path flash disco
+02-06-2019 14:41:14 | disco | path flash disco
+02-06-2019 14:41:56 | disco | path kern disco
+02-06-2019 14:42:02 | disco | path kern flash
+02-06-2019 14:42:55 | disco | path kern disco
+02-06-2019 14:45:36 | disco | path flash disco
+02-06-2019 14:45:41 | disco | path flash kern
+02-06-2019 14:46:09 | disco | path flash kern
+02-06-2019 14:49:11 | disco | path flash disco
