@@ -57,3 +57,7 @@
 02-06-2019 23:23:30 | admin | host -link disco kern
 02-06-2019 23:23:53 | admin | path flash disco
 02-06-2019 23:24:03 | admin | su -connect disco toto
+03-06-2019 10:45:11 | flash | path flash kern
+03-06-2019 10:45:26 | flash | tunnel kern
+03-06-2019 10:46:22 | disco | tunnel kern
+03-06-2019 10:48:09 | flash | tunnel kern

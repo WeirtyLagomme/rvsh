@@ -19,7 +19,7 @@ function sessionStart () {
     SESSION_USER="$2"
     SESSION_VM="$3"
     SESSION_DIR="/"
-    SESSION_START=$(date)
+    SESSION_START=$(date '+%d-%m-%Y %H:%M:%S')
     # Save user's session in VM
     if [[ $SESSION_MODE == "connect" ]]; then
         fileStream "append" "./vms/$SESSION_VM/sessions" "$SESSION_USER,$SESSION_START,$SESSION_ID"

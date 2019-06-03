@@ -16,7 +16,7 @@ function path () {
         graph+="\n"
     done
     # VM to reach must be in graph
-    [[ ! $graph =~ .*,$vm_to,.* ]] && dispNotif "2" "There's not path between $vm_from and $vm_to" && return 0
+    [[ ! $graph =~ .*,$vm_to,.* ]] && dispNotif "2" "There's not path between $vm_from and $vm_to" && return 1
     # Solve shortest path
     graph+="solve,$vm_from,$vm_to"
     local path=$(printf "$graph" | awk -f ./modules/dijkstra.awk)

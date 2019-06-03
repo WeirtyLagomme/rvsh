@@ -71,3 +71,5 @@
 02-06-2019 23:24:19 | disco | path disco kern
 02-06-2019 23:24:26 | disco | path flash kern
 02-06-2019 23:26:11 | disco | path flash kern
+03-06-2019 10:44:14 | disco | path disco kern
+03-06-2019 10:44:37 | disco | su -connect flash tom
