@@ -1,22 +1,3 @@
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-01-06-2019 21:20:36 | disco | help logs
-01-06-2019 21:21:15 | disco | logs toto
-11
-12
-13
-14
-15
-16
-1802-06-2019 12:54:52 | disco | path 1 2
 02-06-2019 12:55:14 | disco | path 1 2
 02-06-2019 12:56:42 | disco | path 
 02-06-2019 13:24:38 | disco | su -admin
@@ -71,3 +52,22 @@
 02-06-2019 14:45:41 | disco | path flash kern
 02-06-2019 14:46:09 | disco | path flash kern
 02-06-2019 14:49:11 | disco | path flash disco
+02-06-2019 23:10:12 | disco | path disco flash
+02-06-2019 23:10:40 | disco | path flash disco
+02-06-2019 23:10:54 | disco | path flash lzkjf
+02-06-2019 23:10:57 | disco | path flash disco
+02-06-2019 23:12:07 | disco | path flash disco
+02-06-2019 23:13:08 | disco | path flash disco
+02-06-2019 23:15:28 | disco | path flash disco
+02-06-2019 23:16:27 | disco | path flash disco
+02-06-2019 23:16:54 | disco | path flash disco
+02-06-2019 23:17:05 | disco | path disco kern
+02-06-2019 23:18:57 | disco | path disco flash
+02-06-2019 23:19:03 | disco | path disco kern
+02-06-2019 23:20:24 | disco | su -admin
+02-06-2019 23:20:48 | disco | clear 
+02-06-2019 23:20:55 | disco | path flash kern
+02-06-2019 23:24:11 | disco | path flash disco
+02-06-2019 23:24:19 | disco | path disco kern
+02-06-2019 23:24:26 | disco | path flash kern
+02-06-2019 23:26:11 | disco | path flash kern

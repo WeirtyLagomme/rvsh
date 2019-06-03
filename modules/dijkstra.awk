@@ -1,6 +1,6 @@
 #!/bin/awk -f
 
-BEGIN{
+BEGIN {
 	FS=",";
 	formato="[from],\t[to],\t+[cost],\t[pathcost]";
 	BIG=1000000000;

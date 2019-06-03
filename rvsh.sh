@@ -18,7 +18,8 @@ case $1 in
         ;;
     -t )
         #sessionStart "admin" "tom"
-        sessionStart "connect" "toto" "disco"
+        #sessionStart "connect" "toto" "disco"
+        path "flash" "kern"
         ;;
     * )
         error_msg="Invalid argument : the \"$1\" flag doesn't exists"

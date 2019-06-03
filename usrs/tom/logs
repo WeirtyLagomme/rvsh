@@ -51,3 +51,9 @@
 02-06-2019 14:21:16 | admin | host -link disco kern
 02-06-2019 14:21:27 | admin | su -connect
 02-06-2019 14:21:40 | admin | su -connect disco toto
+02-06-2019 23:20:33 | admin | host -link disco kern
+02-06-2019 23:20:42 | admin | su -connect disco toto
+02-06-2019 23:23:17 | admin | host -link disco flash
+02-06-2019 23:23:30 | admin | host -link disco kern
+02-06-2019 23:23:53 | admin | path flash disco
+02-06-2019 23:24:03 | admin | su -connect disco toto
