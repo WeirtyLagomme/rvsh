@@ -73,3 +73,18 @@
 02-06-2019 23:26:11 | disco | path flash kern
 03-06-2019 10:44:14 | disco | path disco kern
 03-06-2019 10:44:37 | disco | su -connect flash tom
+03-06-2019 16:27:52 | disco | ls 
+03-06-2019 16:28:18 | disco | ls share
+03-06-2019 16:29:15 | disco | clear 
+03-06-2019 16:29:21 | disco | help ls
+03-06-2019 16:29:31 | disco | help 
+03-06-2019 16:32:35 | disco | help path
+03-06-2019 16:32:42 | disco | path flash kern
+03-06-2019 16:35:04 | disco | help logs
+03-06-2019 16:35:40 | disco | su -admin
+03-06-2019 16:47:27 | disco | ls 
+03-06-2019 16:47:30 | disco | cd home
+03-06-2019 16:47:31 | disco | ls 
+03-06-2019 16:47:39 | disco | nano hola
+03-06-2019 16:47:46 | disco | cat hola
+03-06-2019 16:47:51 | disco | ls 

@@ -18,7 +18,7 @@ function write () {
         dispError "3" "${OR}$username${NC} isn't connected to the ${OR}$vm_name${NC} virtual machine" && return 1
     fi
     # Send message
-    echo "$(date) $SESSION_USER $message" >> "./usrs/$username/msgs/unread"
+    echo "$(date '+%d-%m-%Y %H:%M:%S') $SESSION_USER $message" >> "./usrs/$username/msgs/unread"
 }
 
 function helpWrite () {

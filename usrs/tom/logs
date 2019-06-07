@@ -61,3 +61,13 @@
 03-06-2019 10:45:26 | flash | tunnel kern
 03-06-2019 10:46:22 | disco | tunnel kern
 03-06-2019 10:48:09 | flash | tunnel kern
+03-06-2019 10:52:56 | flash | clear 
+03-06-2019 10:53:02 | flash | help tunnel
+03-06-2019 10:53:10 | flash | help 
+03-06-2019 16:27:47 | admin | su -connect disco toto
+03-06-2019 16:35:48 | admin | logs toto
+03-06-2019 16:41:56 | admin | help users
+03-06-2019 16:46:15 | admin | clear 
+03-06-2019 16:46:52 | admin | help 
+03-06-2019 16:47:03 | admin | ls 
+03-06-2019 16:47:12 | admin | su -connect disco toto
