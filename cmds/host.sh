@@ -62,7 +62,7 @@ function unlinkHost () {
     dispNotif "0" "The virtual machines ${OR}$vm_name${NC} and ${OR}$sec_vm_name${NC} have been successfuly unlinked"
 }
 
-function helpHost () { # TODO : must be able to (un)link more than 2 at the time
+function helpHost () {
     echo "Allows you to add or remove virtual machines from the network, and manage their links.
     
     #> admin
