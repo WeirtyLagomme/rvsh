@@ -6,7 +6,8 @@
 function passwd () {
     # Check current password
     local curr_passwd="$1"
-    checkPassword "$SESSION_USER" "$curr_passwd" || dispError "0" "Incorrect current password" && return 1
+    ! checkPassword "$SESSION_USER" "$curr_passwd" && dispError "0" "Incorrect current password" && return 1
+    local new_passwd="$2"
     # New password and confirmation must be equal
     local new_passwd_conf="$3"
     if [[ $new_passwd != $new_passwd_conf ]]; then

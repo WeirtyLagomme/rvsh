@@ -100,3 +100,8 @@
 19-06-2019 23:52:07 | disco | write tom@flash coucou
 19-06-2019 23:53:04 | disco | write tom@flash hola
 19-06-2019 23:54:59 | disco | write tom@flash wow
+19-06-2019 23:57:31 | disco | help passwd
+19-06-2019 23:57:49 | disco | passwd 321 456 456
+19-06-2019 23:58:44 | disco | passwd 321 456 456
+20-06-2019 00:01:55 | disco | passwd 321 4567 4567
+20-06-2019 00:02:13 | disco | passwd 4567 321 321
