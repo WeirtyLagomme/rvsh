@@ -88,3 +88,15 @@
 03-06-2019 16:47:39 | disco | nano hola
 03-06-2019 16:47:46 | disco | cat hola
 03-06-2019 16:47:51 | disco | ls 
+19-06-2019 23:41:35 | disco | help write
+19-06-2019 23:41:46 | disco | write tom@flash coucou
+19-06-2019 23:42:00 | disco | passwd 
+19-06-2019 23:42:04 | disco | help passwd
+19-06-2019 23:44:17 | disco | write tom@flash a
+19-06-2019 23:45:35 | disco | write tom@flash coucou
+19-06-2019 23:47:41 | disco | write tom@flash coucou
+19-06-2019 23:49:29 | disco | write tom@flash hello
+19-06-2019 23:52:01 | disco | write to
+19-06-2019 23:52:07 | disco | write tom@flash coucou
+19-06-2019 23:53:04 | disco | write tom@flash hola
+19-06-2019 23:54:59 | disco | write tom@flash wow
