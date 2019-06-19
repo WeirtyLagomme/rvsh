@@ -4,10 +4,6 @@
 
 for file in ./*/*.sh; do source "$file"; done;
 
-# - - - - - < DEFAULT ADMIN > - - - - - #
-
-command ls ./usrs/*/ 2> /dev/null || addUsers "modo" "modo" "1"
-
 # - - - - - < SELECT MODE > - - - - - #
 
 case $1 in
@@ -19,10 +15,6 @@ case $1 in
         ;;
     -h | -help )
         helpMode
-        ;;
-    -t )
-        #sessionStart "admin" "tom"
-        sessionStart "connect" "tom" "flash"
         ;;
     * )
         error_msg="Invalid argument : the \"$1\" flag doesn't exists"

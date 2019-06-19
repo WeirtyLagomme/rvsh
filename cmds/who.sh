@@ -11,7 +11,7 @@ function who () {
     local line=" "
     for (( i=0; i<74; i++ )); do line+="-"; done
     echo "$line"
-    echo -e "${connected_users//,/\\t\\t}" | sed 'y/\(\)/ \n/'
+    echo -e " ${connected_users//,/\\t\\t}" | sed 'y/\(\)/ \n/'
 }
 
 function helpWho () {
