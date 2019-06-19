@@ -26,5 +26,5 @@ function entityExists () {
     [[ $bool == "false" ]] && [[ ! -d "./${type}s/$name" ]] && return 0
     [[ $bool == "true" ]] && word="doesn't" && [[ -d "./${type}s/$name" ]] && return 0
     # Entity status doesn't matches bool
-    dispError "$error" "Incorrect ${entity}name : ${OR}$name${NC} $word exists" && return 1
+    dispError "$error" "Incorrect ${entity}name : ${OR}$name${NC} $word exist" && return 1
 }
